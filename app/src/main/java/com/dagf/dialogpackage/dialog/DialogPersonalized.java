@@ -20,12 +20,7 @@ import android.view.animation.Transformation;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.koushikdutta.ion.Ion;
-import com.koushikdutta.ion.bitmap.Transform;
-import com.koushikdutta.ion.builder.AnimateGifMode;
-import com.morocco.arabic.music.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+import com.dagf.dialogpackage.R;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;

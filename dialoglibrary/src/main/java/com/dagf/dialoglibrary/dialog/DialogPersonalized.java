@@ -11,7 +11,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.morocco.arabic.music.R;
+import com.dagf.dialoglibrary.R;
 
 import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import pl.droidsonroids.gif.GifImageView;
