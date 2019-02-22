@@ -1,6 +1,7 @@
 package com.dagf.dialoglibrary.dialog;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -39,6 +40,17 @@ public class DialogPersonalized extends AlertDialog {
 
         this.lister = ll;
         this.listenerDialog = listener;
+
+    }
+
+    private Drawable gfDrawable;
+
+    public DialogPersonalized(Context c, DialogPackage.ListenerDialog listener, Lister ll, Drawable gifdr){
+        super(c);
+
+        this.lister = ll;
+        this.listenerDialog = listener;
+        this.gfDrawable = gifdr;
 
     }
 
@@ -81,7 +93,11 @@ no_acc.setOnClickListener(new View.OnClickListener() {
 
 
         //Ion.with(getContext()).load(url).withBitmap().animateGif(AnimateGifMode.ANIMATE).intoImageView(gif);
+        if(gfDrawable == null)
         Glide.with(getContext()).asGif().load(R.drawable.gif_d).apply(bitmapTransform(new RoundedCornersTransformation(20, 0))).into(gif);
+   else
+       Glide.with(getContext()).asGif().load(gfDrawable).apply(bitmapTransform(new RoundedCornersTransformation(20, 0))).into(gif);
+
     }
 
    public interface Lister{

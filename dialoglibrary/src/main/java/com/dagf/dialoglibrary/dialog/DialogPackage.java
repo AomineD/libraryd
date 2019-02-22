@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -25,11 +26,23 @@ public class DialogPackage {
 
    // public static final String url = "http://besosdeamor.info/gif_d.gif"; // URL del gif
     public static boolean isShowing;
-    private static final int ID_APP = 23; // id de la app
-    private static final String URL_SERVER = "http://besosdeamor.info/update_package/"; // URL del servidor
+    private static int ID_APP = 23; // id de la app
+    private static String URL_SERVER = "http://besosdeamor.info/update_package/"; // URL del servidor
 
+    private static Drawable gif;
     private static ListenerDialog listenerDialogOrig;
 
+    public static void SetIdApp(int id){
+        ID_APP = id;
+    }
+
+    public static void setUrlServer(String server){
+        URL_SERVER = server;
+    }
+
+    public static void setGif(Drawable gifsetter){
+        gif = gifsetter;
+    }
     /**
      * Inicializa el proceso de verificacion del Dialog de actualizacion
      * @param context - en donde se ejecuta
@@ -70,23 +83,22 @@ public class DialogPackage {
 
 //                            AlertDialog.Builder builder;
                             DialogPersonalized personalized;
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                //builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
-                                personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
-                                    @Override
-                                    public void onClickToDownload() {
-                                        downloadApp(context, context.getPackageName());
-                                    }
-                                });
-                            } else {
-                                //builder = new AlertDialog.Builder(context);
-                                personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
-                                    @Override
-                                    public void onClickToDownload() {
-                                        downloadApp(context, context.getPackageName());
-                                    }
-                                });
-                            }
+                           if(gif == null) {
+                               //builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+                               personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+                                   @Override
+                                   public void onClickToDownload() {
+                                       downloadApp(context, context.getPackageName());
+                                   }
+                               });
+                           }else{
+                               personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+                                   @Override
+                                   public void onClickToDownload() {
+                                       downloadApp(context, context.getPackageName());
+                                   }
+                               }, gif);
+                           }
                             personalized.show();
                           //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
                             isShowing = true;
