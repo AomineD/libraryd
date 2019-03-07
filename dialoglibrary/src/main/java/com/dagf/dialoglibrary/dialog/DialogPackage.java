@@ -29,6 +29,11 @@ public class DialogPackage {
     private static int ID_APP = 23; // id de la app
     private static String URL_SERVER = "http://besosdeamor.info/update_package/"; // URL del servidor
 
+    public static void setTest(boolean isTest) {
+        DialogPackage.isTest = isTest;
+    }
+
+    private static boolean isTest;
     private static Drawable gif;
     private static ListenerDialog listenerDialogOrig;
 
@@ -78,7 +83,8 @@ public class DialogPackage {
 
                     if(!jsonObject.isNull("package_app")){
                         final String verifyPackage = jsonObject.getString("package_app");
-                      //  Log.e("MAIN", "onPostExecute: "+verifyPackage);
+                        if(isTest)
+                        Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
                         if(!verifyPackage.equals(context.getPackageName())){
 
 //                            AlertDialog.Builder builder;
