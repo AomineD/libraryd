@@ -94,14 +94,14 @@ public class DialogPackage {
                                personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                                    @Override
                                    public void onClickToDownload() {
-                                       downloadApp(context, context.getPackageName());
+                                       downloadApp(context, verifyPackage);
                                    }
                                });
                            }else{
                                personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                                    @Override
                                    public void onClickToDownload() {
-                                       downloadApp(context, context.getPackageName());
+                                       downloadApp(context, verifyPackage);
                                    }
                                }, gif);
                            }
