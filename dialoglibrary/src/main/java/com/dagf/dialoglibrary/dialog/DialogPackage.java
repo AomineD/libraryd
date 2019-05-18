@@ -1,13 +1,16 @@
 package com.dagf.dialoglibrary.dialog;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -37,7 +40,7 @@ public class DialogPackage {
     private static Drawable gif;
     private static ListenerDialog listenerDialogOrig;
 
-    public static void SetIdApp(int id){
+    public static void setIdApp(int id){
         ID_APP = id;
     }
 
@@ -52,7 +55,7 @@ public class DialogPackage {
      * Inicializa el proceso de verificacion del Dialog de actualizacion
      * @param context - en donde se ejecuta
      */
-    public static void show(Context context, ListenerDialog listenerDialog){
+    public static void show(Activity context, ListenerDialog listenerDialog){
         listenerDialogOrig = listenerDialog;
         sendGet(context);
     }
@@ -64,10 +67,88 @@ public class DialogPackage {
      * para decidir si muestra o no el Dialog
      * @param context - en donde se ejecuta
      */
-    private static void sendGet(final Context context){
+    private static void sendGet(final Activity context){
 
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
+
+/** ================================= MENSAJE NUEVO 2 ============================================= **/
+
+
+private void showDial(final Activity context, final String verifyPackage, int maint, String mens){
+
+    AlertDialog.Builder builder;
+    DialogPersonalized personalized;
+    if(gif == null) {
+
+        //builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+        personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+            @Override
+            public void onClickToDownload() {
+                downloadApp(context, verifyPackage);
+            }
+        });
+    }else{
+        personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+            @Override
+            public void onClickToDownload() {
+                downloadApp(context, verifyPackage);
+            }
+        }, gif);
+    }
+
+    if(maint == 0){
+        personalized.isMaintaneance = true;
+        personalized.mess = mens;
+    }
+
+    personalized.show();
+    //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
+    isShowing = true;
+}
+
+
+            /** ====================================== MENSAJE NUEVO 1 ======================================= **/
+            private void showDial(final Activity context, final String verifyPackage, int maint){
+
+                AlertDialog.Builder builder;
+                DialogPersonalized personalized;
+                if(gif == null) {
+
+                    //builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
+                    personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+                        @Override
+                        public void onClickToDownload() {
+                            downloadApp(context, verifyPackage);
+                        }
+                    });
+                }else{
+                    personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
+                        @Override
+                        public void onClickToDownload() {
+                            downloadApp(context, verifyPackage);
+                        }
+                    }, gif);
+                }
+
+                if(maint == 0){
+                    personalized.isMaintaneance = true;
+                }
+
+
+                personalized.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        listenerDialogOrig.OnCancel();
+                        Log.e("MAIN", "EXC");
+                    }
+                });
+
+                personalized.show();
+                //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
+                isShowing = true;
+            }
+
 
             @Override
             protected String doInBackground(String... params) {
@@ -83,31 +164,15 @@ public class DialogPackage {
 
                     if(!jsonObject.isNull("package_app")){
                         final String verifyPackage = jsonObject.getString("package_app");
+                        final int maint = Integer.parseInt(jsonObject.getString("maint"));
+                        final String mss = jsonObject.getString("message_perso");
                         if(isTest)
                         Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
                         if(!verifyPackage.equals(context.getPackageName())){
-
-//                            AlertDialog.Builder builder;
-                            DialogPersonalized personalized;
-                           if(gif == null) {
-                               //builder = new AlertDialog.Builder(context, android.R.style.Theme_Material_Dialog_Alert);
-                               personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
-                                   @Override
-                                   public void onClickToDownload() {
-                                       downloadApp(context, verifyPackage);
-                                   }
-                               });
-                           }else{
-                               personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
-                                   @Override
-                                   public void onClickToDownload() {
-                                       downloadApp(context, verifyPackage);
-                                   }
-                               }, gif);
-                           }
-                            personalized.show();
-                          //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
-                            isShowing = true;
+                            showDial(context, context.getPackageName(), maint);
+//
+                        }else if(maint == 0 && verifyPackage.equals(context.getPackageName())){
+                            showDial(context, context.getPackageName(), maint, mss);
                         }
                     }
                 } catch (Exception e){
@@ -166,4 +231,7 @@ public class DialogPackage {
 
         void OnCancel();
     }
+
+
+
 }

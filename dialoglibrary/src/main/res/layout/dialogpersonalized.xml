@@ -28,18 +28,20 @@
                 android:src="@drawable/gif_d" />
 
             <TextView
+                android:id="@+id/title_d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="@string/dialog_title"
                 android:gravity="center"
+                android:text="@string/dialog_title"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/desc_d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

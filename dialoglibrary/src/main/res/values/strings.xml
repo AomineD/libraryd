@@ -6,5 +6,10 @@
 
     <string name="dialog_accept">ACCEPT</string>
 
+
+    <string name="dialog_maintaneance">Mantenimiento programado</string>
+
+
+    <string name="dialog_desc_maint">Hola, estamos en mantenimiento, pero puedes seguir disfrutando nuestro contenido en esta app…</string>
     <string name="dialog_cancel">CANCEL</string>
 </resources>
