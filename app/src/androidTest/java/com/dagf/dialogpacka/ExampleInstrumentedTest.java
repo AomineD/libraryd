@@ -1,4 +1,4 @@
-package com.dagf.dialogpackage;
+package com.dagf.dialogpacka;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.dagf.dialogpackage", appContext.getPackageName());
+        assertEquals("com.dagf.dialogpacka", appContext.getPackageName());
     }
 }

@@ -1,10 +1,9 @@
-package com.dagf.dialogpackage;
+package com.dagf.dialogpacka;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.dagf.dialoglibrary.dialog.DialogHelper;
-import com.dagf.dialoglibrary.dialog.DialogPackage;
 
 public class MainActivity extends AppCompatActivity {
 

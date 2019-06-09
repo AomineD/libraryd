@@ -7,9 +7,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.dagf.dialoglibrary.R;
@@ -28,7 +30,7 @@ this.packold = packageold;
 private String packold;
     private String nameapp;
     private View btn;
-    private TextView desct;
+    private WebView desct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +44,9 @@ private String packold;
 
 
         desct = findViewById(R.id.text_version);
-    String total = getContext().getString(R.string.dialog_ver_desc) + " "+nameapp+getContext().getString(R.string.dialog_ver_desc2);
-    desct.setText(total);
+    String total = "<html><head></head><body style='text-align:justify;color:black;background-color:white;'>"+ getContext().getString(R.string.dialog_ver_desc) + " "+nameapp+getContext().getString(R.string.dialog_ver_desc2)+"</body></html>";
+        Log.e("MAIN", "onCreate: "+total);
+    desct.loadData(total, "text/html; charset=utf-8", "utf-8");
 
 btn = findViewById(R.id.btnversion);
 btn.setOnClickListener(this);

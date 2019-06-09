@@ -1,4 +1,4 @@
-package com.dagf.dialogpackage;
+package com.dagf.dialogpacka;
 
 import org.junit.Test;
 
