@@ -1,5 +1,6 @@
 package com.dagf.dialoglibrary.dialog;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -56,5 +57,13 @@ private static String firsth = "api.php?getPackage&id_app=";
 
        queue.add(request);
 
+    }
+
+    public static void showAdvertencyLinks(Activity ac, DialogAdvertency.OkListenerAdvertency oklist){
+        if(DialogAdvertency.shouldAppear(ac.getPreferences(Context.MODE_PRIVATE))){
+            DialogAdvertency d = new DialogAdvertency(ac, oklist);
+
+            d.show();
+        }
     }
 }

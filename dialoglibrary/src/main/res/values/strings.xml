@@ -18,4 +18,13 @@
     <string name="dialog_ver_desc2">. Hay una version y la actual que estás usando. Es importante que desinstales la aplicación vieja, nosotros te lo haremos muy facil solo da al boton "Desinstalar version anterior" y te aparecerá un dialogo preguntandote si quieres desinstalar la app, tranquilo es la app vieja la que no sirve por favor desinstala para que esta alerta no te aparezca mas. ¡Muchas gracias por tu colaboracion!</string>
     <string name="uninstall">Desinstala version anterior</string>
 
+
+    <!-- DIALOG ADVERTENCY -->
+
+    <string name="dialog_advertency_t">¡Advertencia!</string>
+    <string name="dialog_advertency_des">Ten cuidado que los links de reproduccion podrían estar caídos y muchos de los filehosters no soportan reanudar cargas tras un tiempo prolongado, si la reproducción es lenta o falla considera que no es culpa o problema de nuestra app, la velocidad de carga o si falla depende exclusivamente del videohoster donde esta almacenado el archivo, nuestra app no puede garantizar la reproduccion de los capitulos perfectamente. Eso si, hacemos lo mejor para que la experiencia sea mucho mas satisfactoria</string>
+    <string name="dialog_advertency_ok">Entendido</string>
+    <string name="dialog_advertency_noappear">No mostrar más</string>
+
+
 </resources>

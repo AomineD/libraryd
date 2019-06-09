@@ -2,7 +2,9 @@ package com.dagf.dialogpacka;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.dagf.dialoglibrary.dialog.DialogAdvertency;
 import com.dagf.dialoglibrary.dialog.DialogHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +18,13 @@ public class MainActivity extends AppCompatActivity {
 
         int id = 68;
 
-        DialogHelper.showDialogVersion(this, ii, id);
+       // DialogHelper.showDialogVersion(this, ii, id);
+
+        DialogHelper.showAdvertencyLinks(this, new DialogAdvertency.OkListenerAdvertency() {
+            @Override
+            public void Okbro() {
+                Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
