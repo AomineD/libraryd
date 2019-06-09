@@ -1,0 +1,68 @@
+package com.dagf.dialoglibrary.dialog;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.dagf.dialoglibrary.R;
+
+public class DialogVersion extends AlertDialog implements View.OnClickListener {
+    protected DialogVersion(Context context) {
+        super(context);
+    }
+
+    public DialogVersion(Context c, String appnm, String packageold){
+        super(c);
+this.nameapp = appnm;
+this.packold = packageold;
+    }
+
+private String packold;
+    private String nameapp;
+    private View btn;
+    private TextView desct;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.dialogversion);
+
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getWindow().setBackgroundDrawable(ActivityCompat.getDrawable(getContext(), R.color.transparent));
+
+
+        desct = findViewById(R.id.text_version);
+    String total = getContext().getString(R.string.dialog_ver_desc) + " "+nameapp+getContext().getString(R.string.dialog_ver_desc2);
+    desct.setText(total);
+
+btn = findViewById(R.id.btnversion);
+btn.setOnClickListener(this);
+
+
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        Intent pack = getContext().getPackageManager().getLaunchIntentForPackage(packold);
+
+        if(pack != null){
+            Intent intent = new Intent(Intent.ACTION_DELETE);
+            intent.setData(Uri.parse("package:"+packold));
+            getContext().startActivity(intent);
+        }
+
+    }
+}

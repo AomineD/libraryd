@@ -29,6 +29,7 @@ public class DialogPersonalized extends AlertDialog {
     private DialogPackage.ListenerDialog listenerDialog;
     private Lister lister;
 
+    public String tit;
 
     protected DialogPersonalized(@NonNull Context context) {
         super(context);
@@ -78,6 +79,11 @@ public class DialogPersonalized extends AlertDialog {
         setContentView(R.layout.dialogpersonalized);
 
         desc = findViewById(R.id.desc_d);
+
+        String jj = getContext().getString(R.string.dialog_descr)+" " +tit+" "+getContext().getString(R.string.dialog_descr_2);
+
+        desc.setText(jj);
+
         title_d = findViewById(R.id.title_d);
 
         if(isMaintaneance){

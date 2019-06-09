@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">DialogPackage</string>
 
-    <string name="dialog_descr">To continue enjoying our content, please download our new application</string>
-    <string name="dialog_title">UPDATE</string>
+    <string name="dialog_descr">Instala ahora la nueva versión de </string>
+    <string name="dialog_descr_2"> que contiene nuevos cambios pero probablemente esta sea borrada de Google Play pronto</string>
+    <string name="dialog_title">¡Actualización!</string>
 
-    <string name="dialog_accept">ACCEPT</string>
+    <string name="dialog_accept">Descargar</string>
 
 
     <string name="dialog_maintaneance">Mantenimiento programado</string>
 
 
     <string name="dialog_desc_maint">Hola, estamos en mantenimiento, pero puedes seguir disfrutando nuestro contenido en esta app…</string>
-    <string name="dialog_cancel">CANCEL</string>
+    <string name="dialog_cancel">Salir</string>
+    <string name="dialog_ver_title">¡Leer con mucha atención!</string>
+    <string name="dialog_ver_desc">Con esta actualización hemos cambiado de aplicación y notarás que hay dos aplicaciones de </string>
+    <string name="dialog_ver_desc2">. Hay una version y la actual que estás usando. Es importante que desinstales la aplicación vieja, nosotros te lo haremos muy facil solo da al boton "Desinstalar version anterior" y te aparecerá un dialogo preguntandote si quieres desinstalar la app, tranquilo es la app vieja la que no sirve por favor desinstala para que esta alerta no te aparezca mas. ¡Muchas gracias por tu colaboracion!</string>
+    <string name="uninstall">Desinstala version anterior</string>
+
 </resources>

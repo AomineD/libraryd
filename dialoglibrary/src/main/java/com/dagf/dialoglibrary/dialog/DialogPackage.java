@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
@@ -54,9 +53,14 @@ public class DialogPackage {
     /**
      * Inicializa el proceso de verificacion del Dialog de actualizacion
      * @param context - en donde se ejecuta
+     *
+     *
      */
-    public static void show(Activity context, ListenerDialog listenerDialog){
+
+    private static String nmapp;
+    public static void show(Activity context, ListenerDialog listenerDialog, String nameapp){
         listenerDialogOrig = listenerDialog;
+        nmapp = nameapp;
         sendGet(context);
     }
 
@@ -101,6 +105,8 @@ private void showDial(final Activity context, final String verifyPackage, int ma
         personalized.isMaintaneance = true;
         personalized.mess = mens;
     }
+
+    personalized.tit = nmapp;
 
     personalized.show();
     //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
