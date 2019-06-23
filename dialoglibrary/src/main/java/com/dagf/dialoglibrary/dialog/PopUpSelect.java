@@ -16,10 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dagf.dialoglibrary.R;
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.ArrayList;
@@ -125,42 +124,20 @@ public class PopUpSelect extends AlertDialog {
             rr.setVisibility(View.GONE);
             scrollView.setVisibility(View.GONE);
 
-                    if (interstitialAd != null && interstitialAd.isAdLoaded()) {
-                        interstitialAd.setAdListener(new InterstitialAdListener() {
-                            @Override
-                            public void onInterstitialDisplayed(Ad ad) {
+                    if (interstitialAd != null && interstitialAd.isLoaded()) {
+                        interstitialAd.setAdListener(new AdListener() {
 
-                            }
+
 
                             @Override
-                            public void onInterstitialDismissed(Ad ad) {
-                                        OpenWithFLIX(scrollView.getCurrentItem());
+                            public void onAdClosed() {
+                                OpenWithFLIX(scrollView.getCurrentItem());
 
 
                                 dismiss();
 
 
-                                interstitialAd.loadAd();
-                            }
-
-                            @Override
-                            public void onError(Ad ad, AdError adError) {
-
-                            }
-
-                            @Override
-                            public void onAdLoaded(Ad ad) {
-
-                            }
-
-                            @Override
-                            public void onAdClicked(Ad ad) {
-
-                            }
-
-                            @Override
-                            public void onLoggingImpression(Ad ad) {
-
+                                interstitialAd.loadAd(new AdRequest.Builder().build());
                             }
                         });
 
