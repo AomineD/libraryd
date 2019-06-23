@@ -9,4 +9,7 @@
 
     <color name="transparent">#00000000</color>
     <color name="accept">#0040FF</color>
+    <color name="tran">#00000000</color>
+    <color name="backgroundPlayer">#ffffff</color>
+    <color name="textPlayer">#000000</color>
 </resources>

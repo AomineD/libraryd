@@ -26,5 +26,11 @@
     <string name="dialog_advertency_ok">Entendido</string>
     <string name="dialog_advertency_noappear">No mostrar más</string>
 
+    <!-- PLAYER SELECT -->
+
+    <string name="select_player">Seleccionar reproductor</string>
+    <string name="info_player">Todo nuestro contenido se apoya en otras aplicaciones, por ello te invitamos a instalar algunos de los siguientes reproductores para asi puedas disfrutar de nuestra app</string>
+    <string name="player_go">Reproducir</string>
+    <string name="cancel">Cancelar</string>
 
 </resources>
