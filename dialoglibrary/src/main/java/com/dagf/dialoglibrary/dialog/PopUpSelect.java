@@ -35,7 +35,7 @@ public class PopUpSelect extends AlertDialog {
     private Uri urr;
     private String namee;
     private View Linss;
-    private View backwh;
+ //   private View backwh;
 
     private boolean Already;
     private RelativeLayout rr;
@@ -82,7 +82,7 @@ public class PopUpSelect extends AlertDialog {
 
         //animationView.setScale(1f);
         rr = findViewById(R.id.kk);
-        backwh = findViewById(R.id.white_backg);
+    //    backwh = findViewById(R.id.white_backg);
         Linss = findViewById(R.id.lin_ss);
         scrollView = findViewById(R.id.reprod);
 
@@ -120,7 +120,7 @@ public class PopUpSelect extends AlertDialog {
         if (!Already) {
 
 
-            backwh.setVisibility(View.VISIBLE);
+         //   backwh.setVisibility(View.VISIBLE);
             Linss.setVisibility(View.GONE);
             rr.setVisibility(View.GONE);
             scrollView.setVisibility(View.GONE);
