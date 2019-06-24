@@ -12,4 +12,5 @@
     <color name="tran">#00000000</color>
     <color name="backgroundPlayer">#ffffff</color>
     <color name="textPlayer">#000000</color>
+    <color name="textActionPlayer">#ffffff</color>
 </resources>

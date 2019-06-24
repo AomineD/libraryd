@@ -29,7 +29,7 @@
     <!-- PLAYER SELECT -->
 
     <string name="select_player">Seleccionar reproductor</string>
-    <string name="info_player">Todo nuestro contenido se apoya en otras aplicaciones, por ello te invitamos a instalar algunos de los siguientes reproductores para asi puedas disfrutar de nuestra app</string>
+    <string name="info_player">No temas, nuestro contenido se reproduce mejor en cualquiera de estos reproductores elige uno y disfruta de nuestro contenido!</string>
     <string name="player_go">Reproducir</string>
     <string name="cancel">Cancelar</string>
 

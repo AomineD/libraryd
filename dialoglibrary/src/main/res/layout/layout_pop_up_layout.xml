@@ -95,7 +95,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/cancel"
-            android:textColor="@color/textPlayer"
+            android:textColor="@color/textActionPlayer"
             android:textSize="14sp" />
 
         <TextView
@@ -110,7 +110,7 @@
             android:gravity="center"
             android:padding="10dp"
             android:text="@string/player_go"
-            android:textColor="@color/textPlayer"
+            android:textColor="@color/textActionPlayer"
             android:textSize="14sp" />
 
 
