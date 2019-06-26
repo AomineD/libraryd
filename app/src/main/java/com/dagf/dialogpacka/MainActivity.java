@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         DialogPackage.show(this, new DialogPackage.ListenerDialog() {
             @Override
-            public void OnOk() {
+            public void OnOk(boolean maint) {
 
             }
 

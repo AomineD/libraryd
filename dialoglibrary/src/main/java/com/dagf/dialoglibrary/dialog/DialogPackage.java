@@ -243,7 +243,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
     }
 
     public interface ListenerDialog{
-        void OnOk();
+        void OnOk(boolean maintaneance);
 
         void OnCancel();
     }

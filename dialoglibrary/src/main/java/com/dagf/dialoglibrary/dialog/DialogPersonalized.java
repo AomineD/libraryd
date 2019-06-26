@@ -118,7 +118,7 @@ accept.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         dismiss();
-        listenerDialog.OnOk();
+        listenerDialog.OnOk(isMaintaneance);
         lister.onClickToDownload();
 
     }
