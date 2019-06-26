@@ -79,7 +79,7 @@ public class DialogPackage {
 /** ================================= MENSAJE NUEVO 2 ============================================= **/
 
 
-private void showDial(final Activity context, final String verifyPackage, int maint, String mens){
+private void showDial(final Activity context, final String verifyPackage, final int maint, String mens){
 
     AlertDialog.Builder builder;
     DialogPersonalized personalized;
@@ -89,6 +89,7 @@ private void showDial(final Activity context, final String verifyPackage, int ma
         personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
             @Override
             public void onClickToDownload() {
+                if(maint == 1)
                 downloadApp(context, verifyPackage);
             }
         });
@@ -96,6 +97,7 @@ private void showDial(final Activity context, final String verifyPackage, int ma
         personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
             @Override
             public void onClickToDownload() {
+                if(maint == 1)
                 downloadApp(context, verifyPackage);
             }
         }, gif);
@@ -115,7 +117,7 @@ private void showDial(final Activity context, final String verifyPackage, int ma
 
 
             /** ====================================== MENSAJE NUEVO 1 ======================================= **/
-            private void showDial(final Activity context, final String verifyPackage, int maint){
+            private void showDial(final Activity context, final String verifyPackage, final int maint){
 
                 AlertDialog.Builder builder;
                 DialogPersonalized personalized;
@@ -125,6 +127,7 @@ private void showDial(final Activity context, final String verifyPackage, int ma
                     personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                         @Override
                         public void onClickToDownload() {
+                            if(maint == 1)
                             downloadApp(context, verifyPackage);
                         }
                     });
@@ -132,6 +135,7 @@ private void showDial(final Activity context, final String verifyPackage, int ma
                     personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                         @Override
                         public void onClickToDownload() {
+                            if(maint == 1)
                             downloadApp(context, verifyPackage);
                         }
                     }, gif);

@@ -6,12 +6,14 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -100,8 +102,15 @@ public class DialogPersonalized extends AlertDialog {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getWindow().setBackgroundDrawable(ActivityCompat.getDrawable(getContext(), R.color.transparent));
 
-        gif = findViewById(R.id.gif_img);
+        ImageView v = findViewById(R.id.iconimg);
 
+        if(v != null) {
+            if (isMaintaneance) {
+                v.setImageDrawable(getContext().getResources().getDrawable(R.drawable.clocko));
+            } else {
+                v.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+            }
+        }
 accept = findViewById(R.id.accept);
 no_acc = findViewById(R.id.cancel);
 

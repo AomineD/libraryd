@@ -20,13 +20,13 @@
             android:layout_centerVertical="true"
             android:orientation="vertical">
 
-            <pl.droidsonroids.gif.GifImageView
-                android:id="@+id/gif_img"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:visibility="gone"
-                android:scaleType="fitXY"
-                android:src="@drawable/gif_d" />
+           <ImageView
+               android:layout_width="match_parent"
+               android:layout_height="80dp"
+               android:id="@+id/iconimg"
+               app:srcCompat="@drawable/downic"
+               android:layout_marginTop="5dp"
+               />
 
             <TextView
                 android:id="@+id/title_d"
