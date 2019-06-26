@@ -63,7 +63,6 @@ public class DialogPersonalized extends AlertDialog {
     }
 
 
-    private GifImageView gif;
     private TextView accept;
     private TextView no_acc;
 
@@ -103,15 +102,16 @@ public class DialogPersonalized extends AlertDialog {
         getWindow().setBackgroundDrawable(ActivityCompat.getDrawable(getContext(), R.color.transparent));
 
         ImageView v = findViewById(R.id.iconimg);
-
+        accept = findViewById(R.id.accept);
         if(v != null) {
             if (isMaintaneance) {
+                accept.setText(getContext().getString(R.string.ok_maint));
                 v.setImageDrawable(getContext().getResources().getDrawable(R.drawable.clocko));
             } else {
                 v.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
             }
         }
-accept = findViewById(R.id.accept);
+
 no_acc = findViewById(R.id.cancel);
 
 accept.setOnClickListener(new View.OnClickListener() {
@@ -132,12 +132,6 @@ no_acc.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-
-        //Ion.with(getContext()).load(url).withBitmap().animateGif(AnimateGifMode.ANIMATE).intoImageView(gif);
-        if(gfDrawable == null)
-        Glide.with(getContext()).asGif().load(R.drawable.gif_d).apply(bitmapTransform(new RoundedCornersTransformation(20, 0))).into(gif);
-   else
-       Glide.with(getContext()).asGif().load(gfDrawable).apply(bitmapTransform(new RoundedCornersTransformation(20, 0))).into(gif);
 
     }
 

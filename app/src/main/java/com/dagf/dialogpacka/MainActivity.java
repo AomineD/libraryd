@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.dagf.dialoglibrary.dialog.DialogAdvertency;
 import com.dagf.dialoglibrary.dialog.DialogHelper;
+import com.dagf.dialoglibrary.dialog.DialogPackage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,13 +19,31 @@ public class MainActivity extends AppCompatActivity {
 
         int id = 68;
 
+
+        DialogPackage.setUrlServer(ii);
+
+        DialogPackage.setTest(true);
+
+        DialogPackage.setIdApp(id);
+
+        DialogPackage.show(this, new DialogPackage.ListenerDialog() {
+            @Override
+            public void OnOk() {
+
+            }
+
+            @Override
+            public void OnCancel() {
+
+            }
+        }, "APP jaja");
        // DialogHelper.showDialogVersion(this, ii, id);
 
-        DialogHelper.showAdvertencyLinks(this, new DialogAdvertency.OkListenerAdvertency() {
+       /* DialogHelper.showAdvertencyLinks(this, new DialogAdvertency.OkListenerAdvertency() {
             @Override
             public void Okbro() {
                 Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 }

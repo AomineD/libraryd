@@ -32,5 +32,6 @@
     <string name="info_player">No temas, nuestro contenido se reproduce mejor en cualquiera de estos reproductores elige uno y disfruta de nuestro contenido!</string>
     <string name="player_go">Reproducir</string>
     <string name="cancel">Cancelar</string>
+    <string name="ok_maint">Ver más</string>
 
 </resources>

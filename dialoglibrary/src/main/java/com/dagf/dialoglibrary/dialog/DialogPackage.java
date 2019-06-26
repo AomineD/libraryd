@@ -127,6 +127,9 @@ private void showDial(final Activity context, final String verifyPackage, final 
                     personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                         @Override
                         public void onClickToDownload() {
+
+
+
                             if(maint == 1)
                             downloadApp(context, verifyPackage);
                         }
@@ -154,8 +157,10 @@ private void showDial(final Activity context, final String verifyPackage, final 
                     }
                 });
 
+                if(isTest)
+                    Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
                 personalized.show();
-                //  Log.e("MAIN", "onPostExecute: 2 = "+verifyPackage);
+
                 isShowing = true;
             }
 
@@ -170,6 +175,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
                 super.onPostExecute(result);
 
                 try{
+
                     JSONObject jsonObject = new JSONObject(result);
 
                     if(!jsonObject.isNull("package_app")){
@@ -187,7 +193,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
                     }
                 } catch (Exception e){
                     e.printStackTrace();
-                    Log.e("MAIN", "onPostExecute: "+e.getMessage());
+                    Log.e("MAIN", "onPostExecute: "+e.getMessage() + " : "+e.getCause());
                 }
             }
         };
