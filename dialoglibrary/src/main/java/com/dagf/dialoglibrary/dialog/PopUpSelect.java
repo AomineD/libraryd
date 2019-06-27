@@ -16,6 +16,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dagf.dialoglibrary.R;
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.InterstitialAdListener;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
@@ -31,6 +34,7 @@ public class PopUpSelect extends AlertDialog {
 
     private Context mContext;
     private InterstitialAd interstitialAd;
+    private com.facebook.ads.InterstitialAd facebook;
     private Uri urr;
     private String namee;
     private View Linss;
@@ -56,6 +60,18 @@ public class PopUpSelect extends AlertDialog {
         this.urr = Uri.parse(url);
         this.namee = nam;
         this.interstitialAd = ad;
+
+
+
+
+    }
+
+    public PopUpSelect(Context context, String url, String nam, com.facebook.ads.InterstitialAd ad) {
+        super(context);
+        this.mContext = context;
+        this.urr = Uri.parse(url);
+        this.namee = nam;
+        this.facebook = ad;
 
 
 
@@ -143,7 +159,51 @@ public class PopUpSelect extends AlertDialog {
 
 
                         interstitialAd.show();
-                    } else {
+                    }// FACEBOOK AUDIENCE
+                    else if(facebook != null && facebook.isAdLoaded()){
+
+                        facebook.setAdListener(new InterstitialAdListener() {
+                            @Override
+                            public void onInterstitialDisplayed(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onInterstitialDismissed(Ad ad) {
+                                OpenWithFLIX(scrollView.getCurrentItem());
+
+
+                                dismiss();
+
+
+                                //facebook.loadAd();
+                            }
+
+                            @Override
+                            public void onError(Ad ad, AdError adError) {
+
+                            }
+
+                            @Override
+                            public void onAdLoaded(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onAdClicked(Ad ad) {
+
+                            }
+
+                            @Override
+                            public void onLoggingImpression(Ad ad) {
+
+                            }
+                        });
+
+                        facebook.show();
+
+                    }
+                    else {
                         OpenWithFLIX(scrollView.getCurrentItem());
                         dismiss();
                     }
