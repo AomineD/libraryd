@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dagf.dialoglibrary.R;
+import com.dagf.presentlogolib.nextview.NextViewItem;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.InterstitialAdListener;
@@ -217,6 +218,12 @@ public class PopUpSelect extends AlertDialog {
         }
 
 
+        private ArrayList<NextViewItem> itemsParcealables = new ArrayList<>();
+
+    public void setItemsParcealables(ArrayList<NextViewItem> ui){
+        this.itemsParcealables = ui;
+    }
+
     private void OpenWithFLIX(int pos) {
         String packageName = packages.get(pos);
         try {
@@ -224,6 +231,10 @@ public class PopUpSelect extends AlertDialog {
             mx.setPackage(packageName);
             mx.setDataAndType(urr, "video/*");
             mx.putExtra("title", namee);
+
+            if(itemsParcealables.size() > 0)
+            mx.putParcelableArrayListExtra("next_items", itemsParcealables);
+
             // mx.putExtra("from_start", false);
 
             mContext.startActivity(mx);
