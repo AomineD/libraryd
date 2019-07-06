@@ -148,7 +148,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
                     personalized.isMaintaneance = true;
                 }
 
-
+                personalized.tit = nmapp;
                 personalized.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
