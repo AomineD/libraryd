@@ -81,7 +81,11 @@ public class PopUpSelect extends AlertDialog {
 
     private ArrayList<Integer> drawablesInt = new ArrayList<>();
     private ArrayList<String> packages = new ArrayList<>();
+    private String[] apiskeys;
 
+    public void setKeys(String[] ke){
+        this.apiskeys = ke;
+    }
     public void setDrawables(ArrayList<Integer> dr){
         this.drawablesInt = dr;
     }
@@ -231,6 +235,8 @@ public class PopUpSelect extends AlertDialog {
             mx.setPackage(packageName);
             mx.setDataAndType(urr, "video/*");
             mx.putExtra("title", namee);
+            if(apiskeys != null && apiskeys.length > 0)
+mx.putExtra("key_apis", apiskeys);
 
             if(itemsParcealables.size() > 0)
             mx.putParcelableArrayListExtra("next_items", itemsParcealables);
