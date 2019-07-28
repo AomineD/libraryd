@@ -32,9 +32,7 @@ public class playerAdapter extends RecyclerView.Adapter<playerAdapter.HolderPlay
 
     @Override
     public void onBindViewHolder(@NonNull HolderPlayer holder, int position) {
-        if(position == 0){
             holder.icon.setImageDrawable(mContext.getResources().getDrawable(intDrawables.get(position))); // TODO: CAMBIAR A ICONO DESEADO
-        }
     }
 
 
