@@ -234,11 +234,27 @@ private void showDial(final Activity context, final String verifyPackage, final 
         return jsonString;
     }
 
+    private static boolean isGooglePlay = true;
+
+    public static void noGooglePlay(){
+        isGooglePlay = false;
+    }
+
+    private static String urlToApp = "nothing";
+
+    public static String getUrlToApp(){
+        return urlToApp;
+    }
     private static void downloadApp(Context context, String packageName){
-        try {
-            context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id="+packageName)));
-        } catch (ActivityNotFoundException var4) {
-            context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id="+packageName)));
+        if(isGooglePlay) {
+            try {
+                context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + packageName)));
+            } catch (ActivityNotFoundException var4) {
+                context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+            }
+        }else{
+            context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(packageName)));
+        urlToApp = packageName;
         }
     }
 
