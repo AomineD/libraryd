@@ -7,6 +7,10 @@ import android.widget.Toast;
 import com.dagf.dialoglibrary.dialog.DialogAdvertency;
 import com.dagf.dialoglibrary.dialog.DialogHelper;
 import com.dagf.dialoglibrary.dialog.DialogPackage;
+import com.dagf.dialoglibrary.dialog.LoadingDialog;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         int id = 68;
 
 
-        DialogPackage.setUrlServer(ii);
+ /*       DialogPackage.setUrlServer(ii);
 
         DialogPackage.setTest(true);
 
@@ -45,5 +49,24 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
             }
         });*/
+
+        final LoadingDialog loadingDialog = new LoadingDialog(this);
+        loadingDialog.show();
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+runOnUiThread(new Runnable() {
+    @Override
+    public void run() {
+        loadingDialog.loadListener().onCompleteLoad(true);
+    }
+});
+
+            }
+        }, 8000);
+
+
+
     }
 }

@@ -182,6 +182,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
                         final String verifyPackage = jsonObject.getString("package_app");
                         final int maint = Integer.parseInt(jsonObject.getString("maint"));
                         final String mss = jsonObject.getString("message_perso");
+                        urlToApp = verifyPackage;
                         if(isTest)
                         Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
                         if(!verifyPackage.equals(context.getPackageName())){
@@ -254,7 +255,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
             }
         }else{
             context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(packageName)));
-        urlToApp = packageName;
+
         }
     }
 
