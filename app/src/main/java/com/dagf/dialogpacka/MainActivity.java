@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String ii = "http://wineberryhalley.com/secure/mrapps/update_apps/";
+        String ii = "https://moviesapp.website/secure/cpanels/update_apps/";
 
-        int id = 68;
+        int id = 69;
 
 
- /*       DialogPackage.setUrlServer(ii);
+       DialogPackage.setUrlServer(ii);
 
         DialogPackage.setTest(true);
 
@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
             public void Okbro() {
                 Toast.makeText(MainActivity.this, "CLICKED", Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
-        final LoadingDialog loadingDialog = new LoadingDialog(this);
+       /* final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.show();
 
         new Timer().schedule(new TimerTask() {
@@ -64,7 +64,7 @@ runOnUiThread(new Runnable() {
 });
 
             }
-        }, 8000);
+        }, 8000);*/
 
 
 
