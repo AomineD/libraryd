@@ -38,6 +38,7 @@ public class PopUpSelect extends AlertDialog {
     private com.facebook.ads.InterstitialAd facebook;
     private Uri urr;
     private String namee;
+    private ArrayList<PlayerObject> playerObjects = new ArrayList<>();
     private View Linss;
  //   private View backwh;
 
@@ -45,7 +46,7 @@ public class PopUpSelect extends AlertDialog {
     private RelativeLayout rr;
 
 
-    public static boolean edit;
+    public static boolean urlExtern;
     public static long item_id;
     private boolean ok_bol;
     private DiscreteScrollView scrollView;
@@ -65,6 +66,10 @@ public class PopUpSelect extends AlertDialog {
 
 
 
+    }
+
+    public void setPlayerObjects(ArrayList<PlayerObject> objects){
+        this.playerObjects = objects;
     }
 
     public PopUpSelect(Context context, String url, String nam, com.facebook.ads.InterstitialAd ad) {
@@ -106,10 +111,20 @@ public class PopUpSelect extends AlertDialog {
         Linss = findViewById(R.id.lin_ss);
         scrollView = findViewById(R.id.reprod);
 
-        playerAdapter adapter = new playerAdapter(mContext, drawablesInt);
+        if(!urlExtern) {
+            playerAdapter adapter = new playerAdapter(mContext);
 
-        scrollView.setAdapter(adapter);
+            adapter.setDrawables(drawablesInt);
 
+            scrollView.setAdapter(adapter);
+
+        }else if(playerObjects != null){
+            playerAdapter adapter = new playerAdapter(mContext);
+
+            adapter.setPlayers(playerObjects);
+
+            scrollView.setAdapter(adapter);
+        }
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -229,31 +244,55 @@ public class PopUpSelect extends AlertDialog {
     }
 
     private void OpenWithFLIX(int pos) {
-        String packageName = packages.get(pos);
-        try {
-            Intent mx = new Intent(Intent.ACTION_VIEW);
-            mx.setPackage(packageName);
-            mx.setDataAndType(urr, "video/*");
-            mx.putExtra("title", namee);
-            if(apiskeys != null && apiskeys.length > 0)
-mx.putExtra("key_apis", apiskeys);
-
-            if(itemsParcealables.size() > 0)
-            mx.putParcelableArrayListExtra("next_items", itemsParcealables);
-
-            // mx.putExtra("from_start", false);
-
-            mContext.startActivity(mx);
-
-        } catch (Exception e) {
-            Log.e("MAIN", "OpenWithMX: " + e.getMessage());
-
+        if(!urlExtern) {
+            String packageName = packages.get(pos);
             try {
-                mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-            } catch (android.content.ActivityNotFoundException ee) {
-                mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-            }
+                Intent mx = new Intent(Intent.ACTION_VIEW);
+                mx.setPackage(packageName);
+                mx.setDataAndType(urr, "video/*");
+                mx.putExtra("title", namee);
+                if (apiskeys != null && apiskeys.length > 0)
+                    mx.putExtra("key_apis", apiskeys);
 
+                if (itemsParcealables.size() > 0)
+                    mx.putParcelableArrayListExtra("next_items", itemsParcealables);
+
+                // mx.putExtra("from_start", false);
+
+                mContext.startActivity(mx);
+
+            } catch (Exception e) {
+                Log.e("MAIN", "OpenWithMX: " + e.getMessage());
+
+                try {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                } catch (android.content.ActivityNotFoundException ee) {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                }
+
+            }
+        }else if(playerObjects.size() > 0){
+            String packageName = playerObjects.get(pos).packageName;
+            try {
+                Intent mx = new Intent(Intent.ACTION_VIEW);
+                mx.setPackage(packageName);
+                mx.setDataAndType(urr, "video/*");
+                mx.putExtra("title", namee);
+                if (apiskeys != null && apiskeys.length > 0)
+                    mx.putExtra("key_apis", apiskeys);
+
+                if (itemsParcealables.size() > 0)
+                    mx.putParcelableArrayListExtra("next_items", itemsParcealables);
+
+                // mx.putExtra("from_start", false);
+
+                mContext.startActivity(mx);
+
+            } catch (Exception e) {
+                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(playerObjects.get(pos).url_to)));
+
+
+            }
         }
     }
 
