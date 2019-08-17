@@ -18,8 +18,8 @@ import java.util.ArrayList;
 public class playerAdapter extends RecyclerView.Adapter<playerAdapter.HolderPlayer> {
 
     private Context mContext;
-    private ArrayList<Integer> intDrawables = new ArrayList<>();
-    private ArrayList<PlayerObject> playerObjects = new ArrayList<>();
+    private ArrayList<Integer> intDrawables;
+    private ArrayList<PlayerObject> playerObjects;
 
     public playerAdapter(Context mm){
         this.mContext = mm;
