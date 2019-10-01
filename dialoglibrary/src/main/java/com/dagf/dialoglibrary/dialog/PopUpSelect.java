@@ -195,8 +195,11 @@ public class PopUpSelect extends AlertDialog {
 
                                 dismiss();
 
+                                String id = facebook.getPlacementId();
 
-                                //facebook.loadAd();
+                                facebook = new com.facebook.ads.InterstitialAd(getContext(), id);
+
+                                facebook.loadAd();
                             }
 
                             @Override
