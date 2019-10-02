@@ -32,6 +32,7 @@ popUpShare.setShare_btn("Regalar");
 popUpShare.setUrl_img("https://wallpaperplay.com/walls/full/2/5/d/129759.jpg");
 popUpShare.setShareTexT("Prueba ahora esta app gratis");
 
+if(PopUpShare.shouldShow(this, 2))
 popUpShare.show();
     }
 }

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.dagf.dialoglibrary.R;
 
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+//import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import pl.droidsonroids.gif.GifImageView;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;

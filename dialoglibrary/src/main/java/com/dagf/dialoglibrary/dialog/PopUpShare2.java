@@ -66,18 +66,11 @@ public class PopUpShare2 extends AlertDialog {
         super(context, themeResId);
     }
 
-    private int session_frec;
+    public static boolean shouldShow(Context c, int session_frec)
+    {
+        SharedPreferences preferences = c.getSharedPreferences("pop_up", Context.MODE_PRIVATE);
 
-    public void setFrecuency(int frecuency){
-        this.session_frec = frecuency;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.pop_up_share_2);
-
-        SharedPreferences preferences = getContext().getSharedPreferences("pop_up", Context.MODE_PRIVATE);
+        boolean finl = preferences.getInt(key_session, 0) >= session_frec;
 
         if(preferences.getInt(key_session, 0) < session_frec){
             int k = preferences.getInt(key_session, 0);
@@ -86,13 +79,20 @@ public class PopUpShare2 extends AlertDialog {
 
             editor.putInt(key_session, k).commit();
 
-            dismiss();
 
         }else{
             SharedPreferences.Editor editor = preferences.edit();
-
             editor.putInt(key_session, 0).commit();
+
         }
+
+        return  finl;
+
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.pop_up_share_2);
 
 
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);

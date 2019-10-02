@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -65,20 +66,12 @@ public class PopUpShare extends AlertDialog {
     }
 
 
-    private int session_frec;
+    public static boolean shouldShow(Context c, int session_frec)
+    {
+        SharedPreferences preferences = c.getSharedPreferences("pop_up", Context.MODE_PRIVATE);
 
-    public void setFrecuency(int frecuency){
-        this.session_frec = frecuency;
-    }
-
-    public static final String key_session = "session_kfew";
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.pop_up_share);
-
-        SharedPreferences preferences = getContext().getSharedPreferences("pop_up", Context.MODE_PRIVATE);
-
+        boolean finl = preferences.getInt(key_session, 0) >= session_frec;
+      //  Log.e("MAIN", "shouldShow: "+preferences.getInt(key_session, 0) + " " + session_frec );
         if(preferences.getInt(key_session, 0) < session_frec){
             int k = preferences.getInt(key_session, 0);
             k++;
@@ -86,13 +79,22 @@ public class PopUpShare extends AlertDialog {
 
             editor.putInt(key_session, k).commit();
 
-            dismiss();
 
         }else{
             SharedPreferences.Editor editor = preferences.edit();
-
             editor.putInt(key_session, 0).commit();
+
         }
+
+        return  finl;
+
+    }
+
+    public static final String key_session = "session_kfew";
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.pop_up_share);
 
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
