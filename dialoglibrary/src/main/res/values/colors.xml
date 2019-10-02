@@ -13,5 +13,6 @@
     <color name="backgroundPlayer">#ffffff</color>
     <color name="textPlayer">#000000</color>
     <color name="textActionPlayer">#ffffff</color>
+    <color name="pop_up_color">#fff</color>
     <color name="text_title_share">#FFF</color>
 </resources>

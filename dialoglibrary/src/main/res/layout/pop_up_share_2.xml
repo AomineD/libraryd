@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="405dp"
         android:layout_marginTop="50dp"
-        app:cardBackgroundColor="@color/colorPrimary"
+        app:cardBackgroundColor="@color/pop_up_color"
         app:cardCornerRadius="15dp"
         app:cardElevation="0dp">
 
