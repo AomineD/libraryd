@@ -15,4 +15,5 @@
     <color name="textActionPlayer">#ffffff</color>
     <color name="pop_up_color">#fff</color>
     <color name="text_title_share">#FFF</color>
+    <color name="text_btn_share">#FFF</color>
 </resources>

@@ -33,9 +33,10 @@
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:padding="3dp"
+                android:textStyle="bold"
                 android:text="Titulo"
                 android:textColor="@color/text_title_share"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/desc_text_share"
@@ -44,11 +45,12 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
                 android:fontFamily="@font/roboto"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:padding="3dp"
+                android:padding="2dp"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam non nunc consectetur, sollicitudin eros eget, tincidunt massa. Nunc et justo turpis. Etiam porta, nunc sit amet malesuada sagittis, orci nisl vestibulum mauris"
                 android:textColor="@color/text_title_share"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
 
         </LinearLayout>
@@ -77,7 +79,7 @@
                     android:gravity="center"
                     android:padding="10dp"
                     android:text="Share"
-                    android:textColor="@color/text_title_share"
+                    android:textColor="@color/text_btn_share"
                     android:textSize="14sp" />
 
             </android.support.v7.widget.CardView>
@@ -99,7 +101,7 @@
                     android:gravity="center"
                     android:padding="10dp"
                     android:text="Cancel"
-                    android:textColor="@color/text_title_share"
+                    android:textColor="@color/text_btn_share"
                     android:textSize="14sp" />
 
             </android.support.v7.widget.CardView>
