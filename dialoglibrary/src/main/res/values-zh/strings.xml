@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_descr">安装新版本的 </string>
+    <string name="dialog_descr_2"> 包含新更改，但可能很快就会从Google Play中删除</string>
+    <string name="dialog_title">¡更新资料!</string>
+
+    <string name="dialog_accept">下载</string>
+
+
+    <string name="dialog_maintaneance">定期维修</string>
+</resources>

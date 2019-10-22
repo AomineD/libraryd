@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.bugsnag.android.Bugsnag;
 import com.dagf.dialoglibrary.dialog.DialogAdvertency;
 import com.dagf.dialoglibrary.dialog.DialogHelper;
 import com.dagf.dialoglibrary.dialog.DialogPackage;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Bugsnag.notify(new RuntimeException("Test error"));
         PopUpShare popUpShare = new PopUpShare(this);
 
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_descr">Install the new version of </string>
+    <string name="dialog_descr_2"> that contains new changes but is probably deleted from Google Play soon</string>
+    <string name="dialog_title">¡Update!</string>
+
+    <string name="dialog_accept">Download</string>
+
+
+    <string name="dialog_maintaneance">Scheduled maintenance</string>
+</resources>
