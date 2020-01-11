@@ -37,4 +37,8 @@
     <string name="loading_dialog_desc">Cargando información</string>
     <string name="loading_ok">¡Vale!</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="installapp">Instalar</string>
+
 </resources>

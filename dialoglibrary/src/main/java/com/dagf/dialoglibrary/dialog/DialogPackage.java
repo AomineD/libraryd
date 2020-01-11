@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import org.json.JSONObject;
@@ -29,7 +30,7 @@ public class DialogPackage {
    // public static final String url = "http://besosdeamor.info/gif_d.gif"; // URL del gif
     public static boolean isShowing;
     private static int ID_APP = 23; // id de la app
-    private static String URL_SERVER = "http://besosdeamor.info/update_package/"; // URL del servidor
+    public static String URL_SERVER = "http://besosdeamor.info/update_package/"; // URL del servidor
 
     public static void setTest(boolean isTest) {
         DialogPackage.isTest = isTest;
@@ -58,7 +59,7 @@ public class DialogPackage {
      */
 
     private static String nmapp;
-    public static void show(Activity context, ListenerDialog listenerDialog, String nameapp){
+    public static void show(AppCompatActivity context, ListenerDialog listenerDialog, String nameapp){
         listenerDialogOrig = listenerDialog;
         nmapp = nameapp;
         sendGet(context);
@@ -71,7 +72,7 @@ public class DialogPackage {
      * para decidir si muestra o no el Dialog
      * @param context - en donde se ejecuta
      */
-    private static void sendGet(final Activity context){
+    private static void sendGet(final AppCompatActivity context){
 
         @SuppressLint("StaticFieldLeak")
         AsyncTask<String, Void, String> asyncTask = new AsyncTask<String, Void, String>() {
@@ -79,7 +80,7 @@ public class DialogPackage {
 /** ================================= MENSAJE NUEVO 2 ============================================= **/
 
 
-private void showDial(final Activity context, final String verifyPackage, final int maint, String mens){
+private void showDial(final AppCompatActivity context, final String verifyPackage, final int maint, String mens){
 
     AlertDialog.Builder builder;
     DialogPersonalized personalized;
@@ -117,7 +118,7 @@ private void showDial(final Activity context, final String verifyPackage, final 
 
 
             /** ====================================== MENSAJE NUEVO 1 ======================================= **/
-            private void showDial(final Activity context, final String verifyPackage, final int maint){
+            private void showDial(final AppCompatActivity context, final String verifyPackage, final int maint){
 
                 AlertDialog.Builder builder;
                 DialogPersonalized personalized;
