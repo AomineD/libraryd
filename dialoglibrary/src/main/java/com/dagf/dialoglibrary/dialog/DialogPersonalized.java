@@ -3,18 +3,14 @@ package com.dagf.dialoglibrary.dialog;
 import android.animation.Animator;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -30,13 +26,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.dagf.dialoglibrary.R;
-import com.dagf.dialoglibrary.dialog.adapter.ImageFragment;
-import com.dagf.dialoglibrary.dialog.adapter.LazyViewPager;
 import com.dagf.dialoglibrary.dialog.adapter.VipagAdapter;
 import com.dagf.dialoglibrary.dialog.model.AppliModel;
 import com.daimajia.androidanimations.library.Techniques;
@@ -52,10 +42,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import pl.droidsonroids.gif.GifImageView;
-
-import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class DialogPersonalized extends AlertDialog {
 
@@ -153,6 +139,7 @@ public class DialogPersonalized extends AlertDialog {
                 v.setImageDrawable(getContext().getResources().getDrawable(R.drawable.clocko));
             } else {
          //       v.setColorFilter(ContextCompat.getColor(getContext(), R.color.colorPrimary), android.graphics.PorterDuff.Mode.MULTIPLY);
+        // Glide.with(getContext()).asGif().load(R.drawable.gif_d).fitCenter().into(v);
             }
         }
 
@@ -174,10 +161,11 @@ public class DialogPersonalized extends AlertDialog {
                             return;
                         }
 
-
+                        v.setVisibility(View.VISIBLE);
+findViewById(R.id.gif_img).setVisibility(View.GONE);
+                        findViewById(R.id.anothert).setVisibility(View.VISIBLE);
 
  //                       Log.e("MAIN", "run: "+positi + " / "+ apps.size());
-
 
 
 

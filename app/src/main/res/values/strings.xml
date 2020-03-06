@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DialogPackage</string>
+    <string name="fcm_sender_id">1053650365605</string>
 </resources>

@@ -1,12 +1,10 @@
 package com.dagf.dialoglibrary.dialog;
 
-import android.animation.Animator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;

@@ -6,12 +6,15 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
 
@@ -183,13 +186,28 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
                         final String verifyPackage = jsonObject.getString("package_app");
                         final int maint = Integer.parseInt(jsonObject.getString("maint"));
                         final String mss = jsonObject.getString("message_perso");
+
                         urlToApp = jsonObject.getString("urlto");
+                        final String version_app = jsonObject.getString("version_app");
+                        String version = "";
+
+                        try {
+                            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+                            version = pInfo.versionName;
+                        } catch (PackageManager.NameNotFoundException e) {
+                            e.printStackTrace();
+                        if(isTest){
+                            Log.e("MAIN", "getVersion DialogPackage "+e.getMessage() );
+                        }
+                        }
+
                         if(isTest)
                         Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
                         if(!verifyPackage.equals(context.getPackageName())){
                             showDial(context, context.getPackageName(), maint);
 //
                         }else if(maint == 0 && verifyPackage.equals(context.getPackageName())){
+if(version_app.equals(" ") || version.equals(version_app))
                             showDial(context, context.getPackageName(), maint, mss);
                         }
                     }

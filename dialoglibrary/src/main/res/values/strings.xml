@@ -9,6 +9,7 @@
 
 
     <string name="dialog_maintaneance">Mantenimiento programado</string>
+    <string name="we_maintaneance">Estamos en mantenimiento, disfruta estas otras mientras: </string>
 
 
     <string name="dialog_desc_maint">Hola, estamos en mantenimiento, pero puedes seguir disfrutando nuestro contenido en esta app…</string>
