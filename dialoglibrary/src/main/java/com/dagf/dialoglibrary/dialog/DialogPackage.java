@@ -217,7 +217,20 @@ if(version_app.equals(" ") || version.equals(version_app))
                 }
             }
         };
-        asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
+
+String version = "";
+        PackageInfo pInfo = null;
+        try {
+            pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            version = pInfo.versionName;
+            asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&version_app="+version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
+        }
+
+
+
     }
 
     /**

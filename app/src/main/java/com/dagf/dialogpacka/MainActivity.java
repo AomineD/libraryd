@@ -9,16 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.bugsnag.android.Bugsnag;
-import com.dagf.dialoglibrary.dialog.DialogAdvertency;
-import com.dagf.dialoglibrary.dialog.DialogHelper;
-import com.dagf.dialoglibrary.dialog.DialogPackage;
-import com.dagf.dialoglibrary.dialog.LoadingDialog;
-import com.dagf.dialoglibrary.dialog.PopUpShare;
-import com.squareup.picasso.Picasso;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import com.dagf.dialoglibrary.dialog.DialogPackage;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +35,7 @@ popUpShare.show();*/
        // Picasso.get().load(Uri.parse("https://jreva.app/cpanel/moreapps/images/background/76110_pelisplus-apk[1].jpg")).fit().into((ImageView) findViewById(R.id.imgv));
 
 
-      DialogPackage.setIdApp(75);
+      DialogPackage.setIdApp(74);
       DialogPackage.setUrlServer("https://moviesapp.website/secure/cpanels/update_apps/");
       DialogPackage.show(this, new DialogPackage.ListenerDialog() {
           @Override
