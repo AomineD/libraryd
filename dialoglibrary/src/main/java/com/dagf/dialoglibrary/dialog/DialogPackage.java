@@ -2,6 +2,7 @@ package com.dagf.dialoglibrary.dialog;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,7 +14,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;

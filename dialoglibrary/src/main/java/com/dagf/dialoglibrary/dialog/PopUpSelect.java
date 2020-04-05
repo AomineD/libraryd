@@ -1,12 +1,12 @@
 package com.dagf.dialoglibrary.dialog;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.appcompat.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +18,8 @@ import com.dagf.dialoglibrary.R;
 import com.dagf.presentlogolib.nextview.NextViewItem;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
+import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 
 import java.util.ArrayList;
@@ -33,8 +31,7 @@ public class PopUpSelect extends AlertDialog {
 
 
     private Context mContext;
-    private InterstitialAd interstitialAd;
-    private com.facebook.ads.InterstitialAd facebook;
+    private InterstitialAd facebook;
     private Uri urr;
     private String namee;
     private ArrayList<PlayerObject> playerObjects = new ArrayList<>();
@@ -55,23 +52,12 @@ public class PopUpSelect extends AlertDialog {
 
     }
 
-    public PopUpSelect(Context context, String url, String nam, InterstitialAd ad) {
-        super(context);
-        this.mContext = context;
-        this.urr = Uri.parse(url);
-        this.namee = nam;
-        this.interstitialAd = ad;
-
-
-
-
-    }
 
     public void setPlayerObjects(ArrayList<PlayerObject> objects){
         this.playerObjects = objects;
     }
 
-    public PopUpSelect(Context context, String url, String nam, com.facebook.ads.InterstitialAd ad) {
+    public PopUpSelect(Context context, String url, String nam, InterstitialAd ad) {
         super(context);
         this.mContext = context;
         this.urr = Uri.parse(url);
@@ -159,27 +145,7 @@ public class PopUpSelect extends AlertDialog {
             rr.setVisibility(View.GONE);
             scrollView.setVisibility(View.GONE);
 
-                    if (interstitialAd != null && interstitialAd.isLoaded()) {
-                        interstitialAd.setAdListener(new AdListener() {
-
-
-
-                            @Override
-                            public void onAdClosed() {
-                                OpenWithFLIX(scrollView.getCurrentItem());
-
-
-                                dismiss();
-
-
-                                interstitialAd.loadAd(new AdRequest.Builder().build());
-                            }
-                        });
-
-
-                        interstitialAd.show();
-                    }// FACEBOOK AUDIENCE
-                    else if(facebook != null && facebook.isAdLoaded()){
+                   if(facebook != null && facebook.isAdLoaded()){
 
                         facebook.setAdListener(new InterstitialAdListener() {
                             @Override
