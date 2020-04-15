@@ -68,6 +68,16 @@ public class PopUpSelect extends AlertDialog {
 
 
     }
+    public PopUpSelect(Context context, String url, String nam) {
+        super(context);
+        this.mContext = context;
+        this.urr = Uri.parse(url);
+        this.namee = nam;
+
+
+
+
+    }
 
     private ArrayList<Integer> drawablesInt = new ArrayList<>();
     private ArrayList<String> packages = new ArrayList<>();
@@ -219,6 +229,7 @@ public class PopUpSelect extends AlertDialog {
                 mx.setPackage(packageName);
                 mx.setDataAndType(urr, "video/*");
                 mx.putExtra("title", namee);
+                mx.putExtra("is_new", true);
                 if (apiskeys != null && apiskeys.length > 0)
                     mx.putExtra("key_apis", apiskeys);
 
@@ -246,6 +257,7 @@ public class PopUpSelect extends AlertDialog {
                 mx.setPackage(packageName);
                 mx.setDataAndType(urr, "video/*");
                 mx.putExtra("title", namee);
+                mx.putExtra("is_new", true);
                 if (apiskeys != null && apiskeys.length > 0)
                     mx.putExtra("key_apis", apiskeys);
 
