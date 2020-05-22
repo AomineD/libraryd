@@ -180,7 +180,8 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
                 super.onPostExecute(result);
 
                 try{
-
+if(isTest)
+                    Log.e("MAIN", "onPostExecute: "+result );
                     JSONObject jsonObject = new JSONObject(result);
 
                     if(!jsonObject.isNull("package_app")){
@@ -224,6 +225,8 @@ String version = "";
         try {
             pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             version = pInfo.versionName;
+            if(isTest)
+            Log.e("MAIN", "sendGet: "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&version_app="+version );
             asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&version_app="+version);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
