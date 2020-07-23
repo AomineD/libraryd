@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import androidx.core.app.ActivityCompat;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -88,6 +89,7 @@ public class PopUpShare extends AlertDialog {
 
     }
 
+    public static boolean isTest = false;
     public static final String key_session = "session_kfew";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,6 +120,10 @@ public class PopUpShare extends AlertDialog {
         cancel_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isTest){
+                    Log.e("MAIN", "onClick: CLICKED CANCEL" );
+                }
+
                 dismiss();
             }
         });
