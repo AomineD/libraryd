@@ -124,7 +124,7 @@ public class PopUpShare extends AlertDialog {
                     Log.e("MAIN", "onClick: CLICKED CANCEL" );
                 }
 
-                dismiss();
+                PopUpShare.this.dismiss();
             }
         });
 
