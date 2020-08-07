@@ -142,39 +142,35 @@ public class DialogPersonalized extends AlertDialog {
             }
         }
 
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
+        if(isMaintaneance) {
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
 
 
-
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
                         /*if(v != null)
                             v.setVisibility(View.GONE);*/
 
 
+                            if (apps.size() < 1) {
+                                return;
+                            }
 
-                        if(apps.size() < 1){
-                            return;
-                        }
+                            v.setVisibility(View.VISIBLE);
+                            findViewById(R.id.gif_img).setVisibility(View.GONE);
+                            findViewById(R.id.anothert).setVisibility(View.VISIBLE);
 
-                        v.setVisibility(View.VISIBLE);
-findViewById(R.id.gif_img).setVisibility(View.GONE);
-                        findViewById(R.id.anothert).setVisibility(View.VISIBLE);
-
- //                       Log.e("MAIN", "run: "+positi + " / "+ apps.size());
-
+                            //                       Log.e("MAIN", "run: "+positi + " / "+ apps.size());
 
 
+                            String texting = apps.get(positi).descApp;
 
+                            desc.setText(texting);
 
-                        String texting = apps.get(positi).descApp;
-
-                        desc.setText(texting);
-
-                        title_d.setText(apps.get(positi).nameApp);
+                            title_d.setText(apps.get(positi).nameApp);
 
                       /*  if(activity.getSupportFragmentManager() != null) {
                          /*   FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
@@ -202,76 +198,74 @@ findViewById(R.id.gif_img).setVisibility(View.GONE);
                               return false;
                           }
                       }).into(v);*/
-                        Picasso.get().load(Uri.parse(apps.get(positi).urlImage)).fit().into(v, new Callback() {
-                            @Override
-                            public void onSuccess() {
+                            Picasso.get().load(Uri.parse(apps.get(positi).urlImage)).fit().into(v, new Callback() {
+                                @Override
+                                public void onSuccess() {
 
-                                YoYo.with(Techniques.SlideInLeft)
-                                        .duration(1000)
-                                        .repeat(0)
-                                        .playOn(v);
-                                initAnim(v);
+                                    YoYo.with(Techniques.SlideInLeft)
+                                            .duration(1000)
+                                            .repeat(0)
+                                            .playOn(v);
+                                    initAnim(v);
 
-                                YoYo.with(Techniques.FadeInUp)
-                                        .duration(1000)
-                                        .repeat(0)
-                                        .playOn(title_d);
-                                initAnimText(title_d);
+                                    YoYo.with(Techniques.FadeInUp)
+                                            .duration(1000)
+                                            .repeat(0)
+                                            .playOn(title_d);
+                                    initAnimText(title_d);
 
-                                YoYo.with(Techniques.FadeInUp)
-                                        .duration(1000)
-                                        .repeat(0)
-                                        .playOn(desc);
-                                initAnimText(desc);
+                                    YoYo.with(Techniques.FadeInUp)
+                                            .duration(1000)
+                                            .repeat(0)
+                                            .playOn(desc);
+                                    initAnimText(desc);
 
+                                }
+
+                                @Override
+                                public void onError(Exception e) {
+                                    Log.e("MAIN", "onError: " + e.getMessage() + apps.get(positi).urlImage);
+                                }
+                            });
+
+                            final String urlAPP = apps.get(positi).urlApp;
+
+                            v.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    VipagAdapter.downloadApp(getContext(), urlAPP);
+                                }
+                            });
+
+
+                            accept.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    //  Log.e(TAG, "onClick: " );
+                                    VipagAdapter.downloadApp(getContext(), urlAPP);
+                                }
+                            });
+                            accept.setText(getContext().getString(R.string.installapp));
+
+
+                            if (positi < apps.size() - 1) {
+                                positi++;
+
+
+                            } else {
+                                positi = 0;
                             }
 
-                            @Override
-                            public void onError(Exception e) {
-                                Log.e("MAIN", "onError: "+e.getMessage() + apps.get(positi).urlImage);
-                            }
-                        });
 
-                        final String urlAPP = apps.get(positi).urlApp;
-
-                        v.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                VipagAdapter.downloadApp(getContext(), urlAPP);
-                            }
-                        });
-
-
-                        accept.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                              //  Log.e(TAG, "onClick: " );
-                                VipagAdapter.downloadApp(getContext(), urlAPP);
-                            }
-                        });
-                        accept.setText(getContext().getString(R.string.installapp));
-
-
-                        if(positi < apps.size() - 1){
-                            positi++;
-
-
-                        }else {
-                            positi = 0;
+                            //  vip.setCurrentItem(positi, true);
+                            //  Log.e("MAIN", "run: "+positi );
                         }
+                    });
 
 
-
-                      //  vip.setCurrentItem(positi, true);
-                      //  Log.e("MAIN", "run: "+positi );
-                    }
-                });
-
-
-
-            }
-        }, 8000, 7500);
-
+                }
+            }, 8000, 7500);
+        }
 
 
 
