@@ -34,9 +34,9 @@ popUpShare.show();*/
 
        // Picasso.get().load(Uri.parse("https://jreva.app/cpanel/moreapps/images/background/76110_pelisplus-apk[1].jpg")).fit().into((ImageView) findViewById(R.id.imgv));
 
-
-      DialogPackage.setIdApp(74);
-      DialogPackage.setUrlServer("https://moviesapp.website/secure/cpanels/update_apps/");
+DialogPackage.setTest(true);
+      DialogPackage.setIdApp(1);
+      DialogPackage.setUrlServer("https://jreva.app/cpanel/update_apps/");
       DialogPackage.show(this, new DialogPackage.ListenerDialog() {
           @Override
           public void OnOk(boolean maintaneance) {

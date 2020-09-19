@@ -132,7 +132,7 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
                     personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                         @Override
                         public void onClickToDownload() {
-
+                           // Log.e("MAIN", "onClickToDownload: clicked" );
 
 
                             if(maint == 1)
@@ -211,6 +211,8 @@ if(isTest)
                         }else if(maint == 0 && verifyPackage.equals(context.getPackageName())){
 if(version_app.equals(" ") || version.equals(version_app))
                             showDial(context, context.getPackageName(), maint, mss);
+                        }else{
+                            showDial(context, context.getPackageName(), maint);
                         }
                     }
                 } catch (Exception e){
