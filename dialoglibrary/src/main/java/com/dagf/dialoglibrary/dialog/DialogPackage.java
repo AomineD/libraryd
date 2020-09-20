@@ -211,7 +211,7 @@ if(isTest)
                         }else if(maint == 0 && verifyPackage.equals(context.getPackageName())){
 if(version_app.equals(" ") || version.equals(version_app))
                             showDial(context, context.getPackageName(), maint, mss);
-                        }else{
+                        }else if(version_app.equals(" ") || version.equals(version_app)){
                             showDial(context, context.getPackageName(), maint);
                         }
                     }
