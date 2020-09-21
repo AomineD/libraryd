@@ -81,6 +81,7 @@ public class DialogPersonalized extends AlertDialog {
     }
 
 
+    private boolean isUpdate = true;
     private TextView accept;
     private TextView no_acc;
 
@@ -110,7 +111,7 @@ public class DialogPersonalized extends AlertDialog {
 
 
 
-        getApps();
+
 
 
 
@@ -143,6 +144,7 @@ public class DialogPersonalized extends AlertDialog {
         }
 
         if(isMaintaneance) {
+            getApps();
             new Timer().schedule(new TimerTask() {
                 @Override
                 public void run() {
@@ -264,7 +266,7 @@ public class DialogPersonalized extends AlertDialog {
 
 
                 }
-            }, 8000, 7500);
+            }, 2000, 7500);
         }
 
 

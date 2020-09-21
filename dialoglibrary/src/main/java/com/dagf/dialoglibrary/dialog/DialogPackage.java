@@ -64,6 +64,8 @@ public class DialogPackage {
 
     private static String nmapp;
     public static void show(AppCompatActivity context, ListenerDialog listenerDialog, String nameapp){
+        banned = false;
+        server_offline = false;
         listenerDialogOrig = listenerDialog;
         nmapp = nameapp;
         sendGet(context);
@@ -108,7 +110,7 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
         }, gif);
     }
 
-    if(maint == 0){
+    if(server_offline){
         personalized.isMaintaneance = true;
         personalized.mess = mens;
     }
@@ -135,7 +137,7 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
                            // Log.e("MAIN", "onClickToDownload: clicked" );
 
 
-                            if(maint == 1)
+                            if(banned || maint == 0)
                             downloadApp(context, verifyPackage);
                         }
                     });
@@ -143,13 +145,13 @@ private void showDial(final AppCompatActivity context, final String verifyPackag
                     personalized = new DialogPersonalized(context, listenerDialogOrig, new DialogPersonalized.Lister() {
                         @Override
                         public void onClickToDownload() {
-                            if(maint == 1)
+                            if(banned || maint == 0)
                             downloadApp(context, verifyPackage);
                         }
                     }, gif);
                 }
 
-                if(maint == 0){
+                if(server_offline){
                     personalized.isMaintaneance = true;
                 }
 
@@ -186,7 +188,9 @@ if(isTest)
 
                     if(!jsonObject.isNull("package_app")){
                         final String verifyPackage = jsonObject.getString("package_app");
-                        final int maint = Integer.parseInt(jsonObject.getString("maint"));
+                        final int maint = Integer.parseInt(jsonObject.getString("maint")); //ACTUALIZACION
+                        banned = Integer.parseInt(jsonObject.getString("banned")) == 0;
+                        server_offline = Integer.parseInt(jsonObject.getString("server")) == 0;
                         final String mss = jsonObject.getString("message_perso");
 
                         urlToApp = jsonObject.getString("urlto");
@@ -204,14 +208,15 @@ if(isTest)
                         }
 
                         if(isTest)
-                        Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
-                        if(!verifyPackage.equals(context.getPackageName())){
+                        Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+urlof);
+
+                        Log.e("MAIN", "onPostExecute: " +(verifyPackAge(context.getPackageName(), verifyPackage))+" " +(maint == 0));
+                        if(banned && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint);
-//
-                        }else if(maint == 0 && verifyPackage.equals(context.getPackageName())){
-if(version_app.equals(" ") || version.equals(version_app))
+                            //
+                        }else if(server_offline && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint, mss);
-                        }else if(version_app.equals(" ") || version.equals(version_app)){
+                        }else if(verifyPackAge(context.getPackageName(), verifyPackage) && maint == 0){
                             showDial(context, context.getPackageName(), maint);
                         }
                     }
@@ -227,9 +232,10 @@ String version = "";
         try {
             pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
             version = pInfo.versionName;
+            urlof = URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&package_app="+context.getPackageName();
             if(isTest)
-            Log.e("MAIN", "sendGet: "+URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&version_app="+version );
-            asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&version_app="+version);
+            Log.e("MAIN", "sendGet: "+urlof );
+            asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP+"&package_app="+context.getPackageName());
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             asyncTask.execute(URL_SERVER+"api.php?getPackage&id_app="+ID_APP);
@@ -239,6 +245,7 @@ String version = "";
 
     }
 
+   static String urlof = "";
     /**
      * Encargado de realizar una peticion
      * @param url - url de la peticion
@@ -273,10 +280,10 @@ String version = "";
         return jsonString;
     }
 
-    private static boolean isGooglePlay = true;
+    private static boolean isGooglePlay = false;
 
-    public static void noGooglePlay(){
-        isGooglePlay = false;
+    public static void isGooglePlayOn(){
+        isGooglePlay = true;
     }
 
     private static String urlToApp = "nothing";
@@ -285,6 +292,7 @@ String version = "";
         return urlToApp;
     }
     private static void downloadApp(Context context, String packageName){
+
         if(isGooglePlay) {
             try {
                 context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse("market://details?id=" + packageName)));
@@ -295,6 +303,7 @@ String version = "";
             context.startActivity(new Intent("android.intent.action.VIEW", Uri.parse(urlToApp)));
 
         }
+
     }
 
     public interface ListenerDialog{
@@ -304,5 +313,11 @@ String version = "";
     }
 
 
+    public static boolean verifyPackAge(String packagename, String packonline){
+        return packagename.equals(packonline);
+    }
+
+    private static boolean banned;
+    static boolean server_offline;
 
 }
