@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.dagf.dialoglibrary.dialog.DialogPackage;
+import com.dagf.dialoglibrary.dialog.UtilsDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,5 +50,5 @@ finish();
           }
       }, "name");
 
-    }
+   }
 }

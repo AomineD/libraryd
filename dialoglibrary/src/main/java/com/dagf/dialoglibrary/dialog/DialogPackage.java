@@ -217,7 +217,21 @@ if(isTest)
                         }else if(server_offline && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint, mss);
                         }else if(verifyPackAge(context.getPackageName(), verifyPackage) && maint == 0 && version.equals(version_app)){
-                            showDial(context, context.getPackageName(), maint);
+                            String finalVersion = version;
+                            UtilsDialog.reviewVersionInPlay(context, urlToApp, new UtilsDialog.VersionListener() {
+                                @Override
+                                public void onLoadCool(String versionInGooglePlay) {
+                                    if(!finalVersion.equals(versionInGooglePlay)){
+                                        showDial(context, context.getPackageName(), maint);
+                                    }
+                                }
+
+                                @Override
+                                public void onFail(String erno) {
+                                    Log.e("MAIN", "onFail: "+erno );
+                                }
+                            });
+
                         }
                     }
                 } catch (Exception e){
