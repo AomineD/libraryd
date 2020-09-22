@@ -216,7 +216,7 @@ if(isTest)
                             //
                         }else if(server_offline && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint, mss);
-                        }else if(verifyPackAge(context.getPackageName(), verifyPackage) && maint == 0){
+                        }else if(verifyPackAge(context.getPackageName(), verifyPackage) && maint == 0 && version.equals(version_app)){
                             showDial(context, context.getPackageName(), maint);
                         }
                     }
