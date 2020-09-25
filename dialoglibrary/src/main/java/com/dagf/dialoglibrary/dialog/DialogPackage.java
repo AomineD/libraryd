@@ -228,6 +228,7 @@ if(isTest)
 
                                 @Override
                                 public void onFail(String erno) {
+                                    showDial(context, context.getPackageName(), maint);
                                     Log.e("MAIN", "onFail: "+erno );
                                 }
                             });
