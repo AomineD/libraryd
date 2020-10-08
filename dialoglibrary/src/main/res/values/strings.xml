@@ -2,8 +2,8 @@
     <string name="app_name">DialogPackage</string>
 
     <string name="dialog_descr">Instala ahora la nueva versión de </string>
-    <string name="dialog_descr_2"> que contiene nuevos cambios pero probablemente esta sea borrada de Google Play pronto</string>
-    <string name="dialog_title">¡Actualización!</string>
+    <string name="dialog_descr_2"> que contiene nuevos cambios porque probablemente esta sea borrada de Google Play pronto</string>
+    <string name="dialog_title">¡Mantenimiento!</string>
 
     <string name="dialog_accept">Descargar</string>
 
