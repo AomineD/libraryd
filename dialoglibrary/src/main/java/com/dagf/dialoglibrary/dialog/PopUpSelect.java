@@ -223,32 +223,35 @@ public class PopUpSelect extends AlertDialog {
 
     private void OpenWithFLIX(int pos) {
         if(!urlExtern) {
-            String packageName = packages.get(pos);
-            try {
-                Intent mx = new Intent(Intent.ACTION_VIEW);
-                mx.setPackage(packageName);
-                mx.setDataAndType(urr, "video/*");
-                mx.putExtra("title", namee);
-                mx.putExtra("is_new", true);
-                if (apiskeys != null && apiskeys.length > 0)
-                    mx.putExtra("key_apis", apiskeys);
-
-                if (itemsParcealables.size() > 0)
-                    mx.putParcelableArrayListExtra("next_items", itemsParcealables);
-
-                // mx.putExtra("from_start", false);
-
-                mContext.startActivity(mx);
-
-            } catch (Exception e) {
-                Log.e("MAIN", "OpenWithMX: " + e.getMessage());
-
+            if(packages.size() > 0) {
+                String packageName = packages.get(pos);
                 try {
-                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-                } catch (android.content.ActivityNotFoundException ee) {
-                    mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
-                }
 
+                    Intent mx = new Intent(Intent.ACTION_VIEW);
+                    mx.setPackage(packageName);
+                    mx.setDataAndType(urr, "video/*");
+                    mx.putExtra("title", namee);
+                    mx.putExtra("is_new", true);
+                    if (apiskeys != null && apiskeys.length > 0)
+                        mx.putExtra("key_apis", apiskeys);
+
+                    if (itemsParcealables.size() > 0)
+                        mx.putParcelableArrayListExtra("next_items", itemsParcealables);
+
+                    // mx.putExtra("from_start", false);
+
+                    mContext.startActivity(mx);
+
+                } catch (Exception e) {
+                    Log.e("MAIN", "OpenWithMX: " + e.getMessage());
+
+                    try {
+                        mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+                    } catch (android.content.ActivityNotFoundException ee) {
+                        mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + packageName)));
+                    }
+
+                }
             }
         }else if(playerObjects.size() > 0){
             String packageName = playerObjects.get(pos).packageName;
