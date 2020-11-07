@@ -224,6 +224,7 @@ if(isTest)
                                 public void onLoadCool(String versionInGooglePlay) {
                                     if(!finalVersion.equals(versionInGooglePlay)){
                                         WallpaperActivity.openWallpapers(context);
+                                        isShowing = true;
                                         //showDial(context, context.getPackageName(), maint);
                                     }
                                 }
@@ -231,6 +232,7 @@ if(isTest)
                                 @Override
                                 public void onFail(String erno) {
                                     WallpaperActivity.openWallpapers(context);
+                                    isShowing = true;
                                     //showDial(context, context.getPackageName(), maint);
                                     Log.e("MAIN", "onFail: "+erno );
                                 }
