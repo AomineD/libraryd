@@ -225,6 +225,7 @@ if(isTest)
                                     if(!finalVersion.equals(versionInGooglePlay)){
                                         WallpaperActivity.openWallpapers(context);
                                         isShowing = true;
+                                        context.finish();
                                         //showDial(context, context.getPackageName(), maint);
                                     }
                                 }
@@ -233,6 +234,7 @@ if(isTest)
                                 public void onFail(String erno) {
                                     WallpaperActivity.openWallpapers(context);
                                     isShowing = true;
+                                    context.finish();
                                     //showDial(context, context.getPackageName(), maint);
                                     Log.e("MAIN", "onFail: "+erno );
                                 }
