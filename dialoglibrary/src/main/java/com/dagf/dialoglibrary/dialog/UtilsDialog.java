@@ -19,14 +19,19 @@ public class UtilsDialog {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-String[] splits = response.split("Current Version");
-String[] splits2 = stripHtml(splits[1]).split("\n");
-if(splits2.length > 0){
-    listener.onLoadCool(splits2[0]);
-}else
-    listener.onFail("no size");
-       //         Log.e("MAIN", "onResponse: has spaces "+splits2[0].contains("\n") );
-          //      Log.e("MAIN", "onResponse: "+splits2[0] );
+                try {
+                    String[] splits = response.split("Current Version");
+                    String[] splits2 = stripHtml(splits[1]).split("\n");
+                    if (splits2.length > 0) {
+                        listener.onLoadCool(splits2[0]);
+                    } else
+                        listener.onFail("no size");
+                    //         Log.e("MAIN", "onResponse: has spaces "+splits2[0].contains("\n") );
+                    //      Log.e("MAIN", "onResponse: "+splits2[0] );
+                }catch (Exception e){
+                    listener.onFail(e.getMessage());
+                 //   Log.e("MAIN", "onResponse: mmm erno "+e.getMessage() );
+                }
             }
         }, new Response.ErrorListener() {
             @Override

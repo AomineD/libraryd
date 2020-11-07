@@ -210,7 +210,7 @@ if(isTest)
                         if(isTest)
                         Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+urlof);
 
-                        Log.e("MAIN", "onPostExecute: " +(verifyPackAge(context.getPackageName(), verifyPackage))+" " +(maint == 0));
+                        //Log.e("MAIN", "onPostExecute: " +(verifyPackAge(context.getPackageName(), verifyPackage))+" " +(maint == 0));
                         if(banned && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint);
                             //
@@ -218,17 +218,20 @@ if(isTest)
                             showDial(context, context.getPackageName(), maint, mss);
                         }else if(verifyPackAge(context.getPackageName(), verifyPackage) && maint == 0 && version.equals(version_app)){
                             String finalVersion = version;
+                           // Log.e("MAIN", "esi: si actualizacion" );
                             UtilsDialog.reviewVersionInPlay(context, urlToApp, new UtilsDialog.VersionListener() {
                                 @Override
                                 public void onLoadCool(String versionInGooglePlay) {
                                     if(!finalVersion.equals(versionInGooglePlay)){
-                                        showDial(context, context.getPackageName(), maint);
+                                        WallpaperActivity.openWallpapers(context);
+                                        //showDial(context, context.getPackageName(), maint);
                                     }
                                 }
 
                                 @Override
                                 public void onFail(String erno) {
-                                    showDial(context, context.getPackageName(), maint);
+                                    WallpaperActivity.openWallpapers(context);
+                                    //showDial(context, context.getPackageName(), maint);
                                     Log.e("MAIN", "onFail: "+erno );
                                 }
                             });
@@ -237,7 +240,7 @@ if(isTest)
                     }
                 } catch (Exception e){
                     e.printStackTrace();
-                    Log.e("MAIN", "onPostExecute: "+e.getMessage() + " : "+e.getCause());
+                    Log.e("MAIN", "ERNO: "+e.getMessage() + " : "+e.getCause());
                 }
             }
         };

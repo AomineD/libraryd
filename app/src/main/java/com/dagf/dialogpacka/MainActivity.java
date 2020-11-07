@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dagf.dialoglibrary.dialog.DialogPackage;
 import com.dagf.dialoglibrary.dialog.UtilsDialog;
+import com.dagf.dialoglibrary.dialog.WallpaperActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,5 +51,8 @@ finish();
           }
       }, "name");
 
+//        WallpaperActivity.openWallpapers(this);
+
    }
+
 }
