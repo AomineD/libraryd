@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="url">
+        <item>https://i.pinimg.com/564x/36/da/54/36da54f0cdeff024ccb1635991840132.jpg</item>
+        <item>https://i.pinimg.com/564x/85/b9/a4/85b9a445471e7947f02bd517cd9aa776.jpg</item>
+        <item>https://i.pinimg.com/564x/96/96/c0/9696c07e6cce50ef2695701faf466b34.jpg</item>
+        <item>https://i.pinimg.com/564x/d1/bb/85/d1bb8574266947257b0579ef8e327c3a.jpg</item>
+        <item>https://i.pinimg.com/564x/0b/d3/6c/0bd36c4a084a6b867c7f177dd37af7cf.jpg</item>
+        <item>https://i.pinimg.com/564x/7b/01/10/7b01107fbf60d2040e1fb4dd82ae2b13.jpg</item>
+        <item>https://i.pinimg.com/564x/7e/bb/8f/7ebb8f077920678d8c8d92df72f26c98.jpg</item>
+        <item>https://i.pinimg.com/564x/d6/d9/23/d6d92313d7c7eb6c28208df76c9860a4.jpg</item>
+        <item>https://i.pinimg.com/564x/99/3c/75/993c75d75cc2b2cc0a6f3b58d7aac1df.jpg</item>
+        <item>https://wallpapercave.com/wp/wp4287713.jpg</item>
+    </string-array>
+</resources>

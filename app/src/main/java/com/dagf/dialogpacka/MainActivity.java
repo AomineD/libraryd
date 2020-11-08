@@ -51,7 +51,7 @@ finish();
           }
       }, "name");
 
-//        WallpaperActivity.openWallpapers(this);
+     //   WallpaperActivity.openWallpapers(this);
 
    }
 
