@@ -1,6 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">DialogPackage</string>
-
     <string name="dialog_descr">Instala ahora la nueva versión de </string>
     <string name="dialog_descr_2"> que contiene nuevos cambios porque probablemente esta sea borrada de Google Play pronto</string>
     <string name="dialog_title">¡Mantenimiento!</string>
@@ -43,13 +42,14 @@
     <string name="installapp">Instalar</string>
     <string name="free">Free</string>
 
-    <string name="doyoulike">Do you like</string>
-    <string name="rate_info">Are you enjoy our app? Rate our app in the store to improve more</string>
-    <string name="more_later">Later</string>
-    <string name="rate_btn">Submit</string>
-    <string name="never_rate">Never</string>
-    <string name="positive_comment">Thanks!!</string>
-    <string name="negative_comment">Oh sorry, tell us what going bad?</string>
-    <string name="send_mail">Send email to admins</string>
 
+
+    <string name="doyoulike">Te gusta</string>
+    <string name="rate_info">Disfrutas de nuestra app? Calificala para mejorarla aun más</string>
+    <string name="more_later">Luego</string>
+    <string name="rate_btn">Calificar</string>
+    <string name="never_rate">Nunca</string>
+    <string name="positive_comment">Gracias vamos a ello!!</string>
+    <string name="negative_comment">Oh perdona, como podemos mejorarla?</string>
+    <string name="send_mail">Enviar email al desarrollador</string>
 </resources>

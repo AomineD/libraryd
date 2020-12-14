@@ -16,4 +16,12 @@
     <color name="pop_up_color">#fff</color>
     <color name="text_title_share">#FFF</color>
     <color name="text_btn_share">#FFF</color>
+
+
+    <color name="rating_background">#fff</color>
+    <color name="button_rating">#1976D2</color>
+    <color name="text_btn_rating">#fff</color>
+
+    <color name="colorGray">#717171</color>
+    <color name="yellow">#FFF200</color>
 </resources>
