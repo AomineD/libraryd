@@ -15,9 +15,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.dagf.dialoglibrary.R;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,23 +37,68 @@ import java.util.Random;
 
 public class WallpaperActivity extends AppCompatActivity {
 
-    public static List<String> urlImgs = new ArrayList<>();
+    public static List<Wallpaper> urlImgs = new ArrayList<>();
+    class Wallpaper{
+      public  String url;
+      public  String name;
+    }
 
 
     public static void openWallpapers(Context c){
         c.startActivity(new Intent(c, WallpaperActivity.class));
-        urlImgs =  Arrays.asList(c.getResources().getStringArray(R.array.url));
+       // urlImgs =  Arrays.asList(c.getResources().getStringArray(R.array.url));
     }
 
+    private void loadWallpapers(){
+        RequestQueue queue = Volley.newRequestQueue(this);
 
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, "https://jreva.app/cpanel/update_apps/api.php?wllpprs", null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try {
+                for (int i = 0; i < response.length(); i++) {
+
+
+                        JSONObject o = response.getJSONObject(i);
+                   Wallpaper a = new Wallpaper();
+                   a.name = o.getString("wallpaper_name");
+                   a.url = o.getString("wallpaper_url");
+
+urlImgs.add(a);
+
+
+                }
+
+                    shuffle(urlImgs);
+                adapterWall.notifyDataSetChanged();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                queue.getCache().clear();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e("MAIN", "onErrorResponse: "+error.getMessage() );
+                queue.getCache().clear();
+            }
+        });
+
+        queue.add(jsonArrayRequest);
+
+    }
+    AdapterWall adapterWall;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallpaper);
         //Log.e("MAIN", "onCreate: "+urlImgs );
-        shuffle(urlImgs);
+        loadWallpapers();
+
         RecyclerView recyclerView = findViewById(R.id.rec_list);
-        AdapterWall adapterWall = new AdapterWall();
+        adapterWall = new AdapterWall();
 
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.VERTICAL, false));
@@ -62,7 +118,9 @@ public class WallpaperActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull WallViewHolder holder, int position) {
-            Picasso.get().load(Uri.parse(urlImgs.get(position))).fit().placeholder(R.drawable.placeholder).into(holder.img);
+            Wallpaper w = urlImgs.get(position);
+            Picasso.get().load(Uri.parse(w.url)).fit().placeholder(R.drawable.placeholder).into(holder.img);
+            holder.textView.setText(w.name);
         }
 
         @Override
@@ -72,9 +130,11 @@ public class WallpaperActivity extends AppCompatActivity {
 
         class WallViewHolder extends RecyclerView.ViewHolder{
 private ImageView img;
+private TextView textView;
 
             public WallViewHolder(@NonNull View itemView) {
                 super(itemView);
+                textView = itemView.findViewById(R.id.textwal);
                 img = itemView.findViewById(R.id.wallpaper_img);
             }
         }
@@ -87,7 +147,7 @@ private ImageView img;
     /**
      * Code from method java.util.Collections.shuffle();
      */
-    public static void shuffle(List<String> array) {
+    public static void shuffle(List<Wallpaper> array) {
         if (random == null) random = new Random();
         int count = array.size();
         for (int i = count; i > 1; i--) {
@@ -95,8 +155,8 @@ private ImageView img;
         }
     }
 
-    private static void swap(List<String> array, int i, int j) {
-        String temp = array.get(i);
+    private static void swap(List<Wallpaper> array, int i, int j) {
+        Wallpaper temp = array.get(i);
        array.set(i, array.get(j));
         array.set(j, temp);
     }

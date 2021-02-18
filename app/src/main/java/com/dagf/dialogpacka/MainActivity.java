@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dagf.dialoglibrary.dialog.DialogPackage;
 import com.dagf.dialoglibrary.dialog.UtilsDialog;
 import com.dagf.dialoglibrary.dialog.WallpaperActivity;
+import com.dagf.dialoglibrary.dialog.rate.RatingDialogHMK;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +36,7 @@ if(PopUpShare.shouldShow(this, 2))
 popUpShare.show();*/
 
        // Picasso.get().load(Uri.parse("https://jreva.app/cpanel/moreapps/images/background/76110_pelisplus-apk[1].jpg")).fit().into((ImageView) findViewById(R.id.imgv));
-
+/*
 DialogPackage.setTest(true);
       DialogPackage.setIdApp(67);
       DialogPackage.setUrlServer("https://jreva.app/cpanel/update_apps/");
@@ -50,8 +51,12 @@ DialogPackage.setTest(true);
 finish();
           }
       }, "name");
+*/
 
-     //   WallpaperActivity.openWallpapers(this);
+        /*RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");
+        ratingDialogHMK.showRating();
+*/
+       WallpaperActivity.openWallpapers(this);
 
    }
 
