@@ -22,6 +22,6 @@
     <color name="button_rating">#1976D2</color>
     <color name="text_btn_rating">#fff</color>
 
-    <color name="colorGray">#717171</color>
-    <color name="yellow">#FFF200</color>
+    <color name="colorGray_libad">#717171</color>
+    <color name="yellow_libad">#FFF200</color>
 </resources>

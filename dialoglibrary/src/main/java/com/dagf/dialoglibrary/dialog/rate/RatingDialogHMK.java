@@ -97,10 +97,10 @@ String rtitl = getString(R.string.doyoulike)+" "+getString(R.string.app_name)+"?
 ratingBar = view.findViewById(R.id.rating);
 
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
-        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow_libad), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow_libad), PorterDuff.Mode.SRC_ATOP);
 
-        int unfilledColor = getContext().getResources().getColor(R.color.colorGray);
+        int unfilledColor = getContext().getResources().getColor(R.color.colorGray_libad);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             stars.getDrawable(0).setTint(unfilledColor);
         } else {
