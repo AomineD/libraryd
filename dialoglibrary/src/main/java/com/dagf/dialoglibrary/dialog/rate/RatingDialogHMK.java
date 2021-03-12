@@ -3,7 +3,10 @@ package com.dagf.dialoglibrary.dialog.rate;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.dagf.dialoglibrary.R;
@@ -91,6 +95,18 @@ String rtitl = getString(R.string.doyoulike)+" "+getString(R.string.app_name)+"?
 
 
 ratingBar = view.findViewById(R.id.rating);
+
+        LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
+        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
+
+        int unfilledColor = getContext().getResources().getColor(R.color.colorGray);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            stars.getDrawable(0).setTint(unfilledColor);
+        } else {
+            stars.getDrawable(0).setColorFilter(unfilledColor, PorterDuff.Mode.SRC_ATOP);
+        }
+
 never = view.findViewById(R.id.never_btn);
 later = view.findViewById(R.id.later_btn);
 submit = view.findViewById(R.id.rate_btn);

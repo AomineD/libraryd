@@ -53,10 +53,11 @@ finish();
       }, "name");
 */
 
-        /*RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");
+      RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");
+      ratingDialogHMK.frecuency_rating = 2;
         ratingDialogHMK.showRating();
-*/
-       WallpaperActivity.openWallpapers(this);
+
+     //  WallpaperActivity.openWallpapers(this);
 
    }
 

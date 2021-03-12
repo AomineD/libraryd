@@ -63,7 +63,7 @@ android:background="@android:color/transparent"
             android:layout_marginTop="8dp"
             android:numStars="5"
             android:rating="4"
-            android:theme="@style/RatingBarRating" />
+             />
 
         <LinearLayout
             android:layout_width="match_parent"
