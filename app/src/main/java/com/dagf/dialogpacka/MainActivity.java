@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.dagf.dialoglibrary.dialog.DialogPackage;
 import com.dagf.dialoglibrary.dialog.UtilsDialog;
 import com.dagf.dialoglibrary.dialog.WallpaperActivity;
+import com.dagf.dialoglibrary.dialog.anti.BottomAnti;
 import com.dagf.dialoglibrary.dialog.rate.RatingDialogHMK;
 
 public class MainActivity extends AppCompatActivity {
@@ -36,8 +37,8 @@ if(PopUpShare.shouldShow(this, 2))
 popUpShare.show();*/
 
        // Picasso.get().load(Uri.parse("https://jreva.app/cpanel/moreapps/images/background/76110_pelisplus-apk[1].jpg")).fit().into((ImageView) findViewById(R.id.imgv));
-/*
-DialogPackage.setTest(true);
+
+/*DialogPackage.setTest(true);
       DialogPackage.setIdApp(67);
       DialogPackage.setUrlServer("https://jreva.app/cpanel/update_apps/");
       DialogPackage.show(this, new DialogPackage.ListenerDialog() {
@@ -51,12 +52,28 @@ DialogPackage.setTest(true);
 finish();
           }
       }, "name");
-*/
+      */
 
+        BottomAnti bottomAnti = new BottomAnti(this);
+
+        bottomAnti.setUrl("https://mna.music-and-songs.com/filtro/");
+        bottomAnti.load(new BottomAnti.LoadListener() {
+            @Override
+            public void OnLoad(boolean checked) {
+                Log.e("MAIN", "OnLoad: "+checked );
+            }
+
+            @Override
+            public void OnFail(String erno) {
+                Log.e("MAIN", "OnFail: "+erno );
+            }
+        });
+
+/*
       RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");
       ratingDialogHMK.frecuency_rating = 2;
         ratingDialogHMK.showRating();
-
+*/
      //  WallpaperActivity.openWallpapers(this);
 
    }

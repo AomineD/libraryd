@@ -207,10 +207,11 @@ if(isTest)
                         }
                         }
 
-                        if(isTest)
-                        Log.e("MAIN", "onPostExecute: "+verifyPackage + " ID APP "+ID_APP+" URL = "+urlof);
+                        if(isTest) {
+                            Log.e("MAIN", "onPostExecute: " + verifyPackage + " ID APP " + ID_APP + " URL = " + urlof);
+                             Log.e("MAIN", "onPostExecute: " +(verifyPackAge(context.getPackageName(), verifyPackage))+" " +(maint == 0));
 
-                        //Log.e("MAIN", "onPostExecute: " +(verifyPackAge(context.getPackageName(), verifyPackage))+" " +(maint == 0));
+                        }
                         if(banned && verifyPackAge(verifyPackage, context.getPackageName())){
                             showDial(context, context.getPackageName(), maint);
                             //

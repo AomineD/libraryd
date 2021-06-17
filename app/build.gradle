@@ -38,4 +38,5 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.bugsnag:bugsnag-android:4.21.1'
     implementation project(path: ':dialoglibrary')
+    implementation 'com.github.AomineD:BClass:1.0.53'
 }

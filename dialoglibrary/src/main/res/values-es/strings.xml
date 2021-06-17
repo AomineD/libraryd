@@ -52,4 +52,7 @@
     <string name="positive_comment">Gracias vamos a ello!!</string>
     <string name="negative_comment">Oh perdona, como podemos mejorarla?</string>
     <string name="send_mail">Enviar email al desarrollador</string>
+
+    <string name="new_version_">Nueva version de la app!</string>
+    <string name="new_version_desc">Hay una nueva version de %s en Google Play, descargala ahora!</string>
 </resources>

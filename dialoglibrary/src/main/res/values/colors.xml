@@ -24,4 +24,6 @@
 
     <color name="colorGray_libad">#717171</color>
     <color name="yellow_libad">#FFF200</color>
+
+    <color name="txt_color">#2e2e2e</color>
 </resources>

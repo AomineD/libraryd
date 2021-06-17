@@ -52,4 +52,7 @@
     <string name="negative_comment">Oh sorry, tell us what going bad?</string>
     <string name="send_mail">Send email to admins</string>
 
+    <string name="new_version_">New app version!</string>
+    <string name="new_version_desc">There are a new version of %s in Google Play, donwload it now!</string>
+
 </resources>
