@@ -47,6 +47,11 @@ public class BottomAnti extends BottomBaseShet {
     public void setUrl(String url){
         this.url = url;
     }
+    private boolean needToShowAutomatic = true;
+
+    public void noShowAutomatic(){
+        needToShowAutomatic = false;
+    }
 
     private String TAG ="MAIN";
     private AppBn appBn;
@@ -63,7 +68,7 @@ public class BottomAnti extends BottomBaseShet {
                                     loadListener.OnLoad(models.isBanned(activity));
 
                                     appBn = models;
-                                if (models.isBanned(activity)) {
+                                if (models.isBanned(activity) && needToShowAutomatic) {
                                     showNow(activity.getSupportFragmentManager());
                                 }
 
@@ -89,7 +94,8 @@ public class BottomAnti extends BottomBaseShet {
 
 
 
-    private void showNow(FragmentManager fragmentManager){
+    public void showNow(FragmentManager fragmentManager){
+        if(!needToShowAutomatic)
         show(fragmentManager, "updtaq");
     }
 
