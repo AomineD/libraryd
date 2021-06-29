@@ -56,7 +56,18 @@ finish();
 
         BottomAnti bottomAnti = new BottomAnti(this);
 
-        bottomAnti.setUrl("https://mna.music-and-songs.com/filtro/");
+        bottomAnti.setUrl("https://jreva.app/cpanel/admin-filtro/");
+        bottomAnti.load(new BottomAnti.LoadListener() {
+            @Override
+            public void OnLoad(boolean checked, boolean capt) {
+                Log.e("MAIN", "OnLoad: "+checked+" "+capt );
+            }
+
+            @Override
+            public void OnFail(String erno) {
+                Log.e("MAIN", "OnFail: "+erno );
+            }
+        });
 
 /*
       RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");

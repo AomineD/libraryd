@@ -68,8 +68,9 @@ public class BottomAnti extends BottomBaseShet {
                                     loadListener.OnLoad(models.isBanned(activity), models.getType_redi().equals("0"));
 
                                     appBn = models;
-                                if (models.isBanned(activity) && needToShowAutomatic) {
-                                    showNow(activity.getSupportFragmentManager());
+                                //    Log.e(TAG, "OnLoadSuccess: "+(models.isBanned(activity) && needToShowAutomatic && !models.getType_redi().equalsIgnoreCase("0")) );
+                                if (models.isBanned(activity) && needToShowAutomatic && !models.getType_redi().equalsIgnoreCase("0")) {
+                                    showNow2(activity.getSupportFragmentManager());
                                 }
 
                                 } catch (PackageManager.NameNotFoundException e) {
@@ -97,6 +98,11 @@ public class BottomAnti extends BottomBaseShet {
     public void showNow(FragmentManager fragmentManager){
         if(!needToShowAutomatic)
         show(fragmentManager, "updtaq");
+    }
+
+    private void showNow2(FragmentManager fragmentManager){
+
+            show(fragmentManager, "updtaq");
     }
 
     private TextView desc;
