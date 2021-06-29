@@ -57,17 +57,6 @@ finish();
         BottomAnti bottomAnti = new BottomAnti(this);
 
         bottomAnti.setUrl("https://mna.music-and-songs.com/filtro/");
-        bottomAnti.load(new BottomAnti.LoadListener() {
-            @Override
-            public void OnLoad(boolean checked) {
-                Log.e("MAIN", "OnLoad: "+checked );
-            }
-
-            @Override
-            public void OnFail(String erno) {
-                Log.e("MAIN", "OnFail: "+erno );
-            }
-        });
 
 /*
       RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");

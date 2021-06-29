@@ -8,6 +8,16 @@ private String name;
 private String url_to;
 private String version;
 
+    public String getType_redi() {
+        return type_redi;
+    }
+
+    public void setType_redi(String type_redi) {
+        this.type_redi = type_redi;
+    }
+
+    private String type_redi;
+
     public String getName() {
         return name;
     }

@@ -39,7 +39,7 @@ public class BottomAnti extends BottomBaseShet {
 
 
     public interface LoadListener{
-        void OnLoad(boolean checked);
+        void OnLoad(boolean checked, boolean captcha);
         void OnFail(String erno);
     }
 
@@ -65,7 +65,7 @@ public class BottomAnti extends BottomBaseShet {
                             super.OnLoadSuccess(models);
 
                                 try {
-                                    loadListener.OnLoad(models.isBanned(activity));
+                                    loadListener.OnLoad(models.isBanned(activity), models.getType_redi().equals("0"));
 
                                     appBn = models;
                                 if (models.isBanned(activity) && needToShowAutomatic) {
