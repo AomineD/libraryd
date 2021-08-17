@@ -52,6 +52,12 @@ public class RatingDialogHMK extends BottomSheetDialogFragment {
        // Log.e("MAINb", "RatingDialogHMK: "+(preferences != null) );
     }
 
+    private boolean isBlacked = false;
+
+    public void setBlacked(){
+        isBlacked = true;
+    }
+
     public void showRating(){
         if(canShow()){
             show(fgM, "tagas");
@@ -115,6 +121,33 @@ title_app_rate = view.findViewById(R.id.title_app_rating);
 
         title_app_rate.setText(rtitl);
 configButtons();
+
+
+if(isBlacked){
+    animation_negative.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blck));
+    general_rel.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blck));
+    animation_positive.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blck));
+
+    RelativeLayout r = view.findViewById(R.id.circle_back);
+
+    r.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.circle_back_blck));
+
+    never.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.blck));
+    later.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.blck));
+
+    TextView text_never = view.findViewById(R.id.text_never);
+    TextView later_te = view.findViewById(R.id.later_text);
+    TextView desc = view.findViewById(R.id.desc_app_rating);
+
+    text_never.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+    later_te.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+
+    desc.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+    title_app_rate.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+
+    submit.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.reda));
+}
+
     }
 
     private void configButtons() {

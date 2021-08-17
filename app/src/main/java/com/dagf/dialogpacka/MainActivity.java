@@ -52,7 +52,7 @@ popUpShare.show();*/
 finish();
           }
       }, "name");
-      */
+
 
         BottomAnti bottomAnti = new BottomAnti(this);
 
@@ -69,11 +69,12 @@ finish();
             }
         });
 
-/*
+*/
       RatingDialogHMK ratingDialogHMK = new RatingDialogHMK(this, "", "");
       ratingDialogHMK.frecuency_rating = 2;
+      ratingDialogHMK.setBlacked();
         ratingDialogHMK.showRating();
-*/
+
      //  WallpaperActivity.openWallpapers(this);
 
    }
