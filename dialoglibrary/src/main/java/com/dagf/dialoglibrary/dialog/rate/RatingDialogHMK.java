@@ -101,6 +101,7 @@ String rtitl = getString(R.string.doyoulike)+" "+getString(R.string.app_name)+"?
 
 
 ratingBar = view.findViewById(R.id.rating);
+ratingBar.setStepSize(1);
 
         LayerDrawable stars = (LayerDrawable) ratingBar.getProgressDrawable();
         stars.getDrawable(1).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow_libad), PorterDuff.Mode.SRC_ATOP);
