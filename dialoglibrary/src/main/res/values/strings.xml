@@ -49,7 +49,7 @@
     <string name="rate_btn">Submit</string>
     <string name="never_rate">Never</string>
     <string name="positive_comment">Thanks!!</string>
-    <string name="negative_comment">Oh sorry, tell us what going bad?</string>
+    <string name="negative_comment">Thanks for your rating, help us to improve more!</string>
     <string name="send_mail">Send email to admins</string>
 
     <string name="new_version_">New app version!</string>

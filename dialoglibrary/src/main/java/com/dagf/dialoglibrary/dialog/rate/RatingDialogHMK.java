@@ -139,13 +139,19 @@ if(isBlacked){
     TextView text_never = view.findViewById(R.id.text_never);
     TextView later_te = view.findViewById(R.id.later_text);
     TextView desc = view.findViewById(R.id.desc_app_rating);
+    TextView sendm = view.findViewById(R.id.send_em_text);
+    TextView neg = view.findViewById(R.id.text_neg);
 
     text_never.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+    neg.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
+    sendm.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
     later_te.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
 
     desc.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
     title_app_rate.setTextColor(ContextCompat.getColor(getContext(), R.color.white));
 
+
+    send_email.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.reda));
     submit.setCardBackgroundColor(ContextCompat.getColor(getContext(), R.color.reda));
 }
 
@@ -174,6 +180,7 @@ if(isBlacked){
         }
     });
 
+    send_email.setVisibility(View.GONE);
     send_email.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -187,6 +194,13 @@ if(isBlacked){
     if(Math.round(ratingBar.getRating()) <= 3){
     animation_negative.setVisibility(View.VISIBLE);
     general_rel.setVisibility(View.GONE);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                    preferences.edit().putBoolean(key_never, true).apply();
+                    dismiss();
+                }
+        }, 2000);
     }else{
         animation_positive.setVisibility(View.VISIBLE);
         general_rel.setVisibility(View.GONE);
